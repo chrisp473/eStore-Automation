@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE TestData [<!ATTLIST xsl:stylesheet id ID #REQUIRED>
+]>
+<?xml-stylesheet type="text/xsl" href="#stylesheet"?><TestData>
+  <xsl:stylesheet id="stylesheet" version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+    <xsl:template match="xsl:stylesheet"/>
+    <xsl:template match="/TestData">
+      <html>
+        <head>
+        </head>
+        <style>
+
+		td{
+			text-align:left;
+			border: 1px solid black;
+		}
+
+		
+	  </style>
+        <body bgcolor="#ebfafa">
+          <script>
+		  			$(document).ready(function() { 
+					$("#summaryDetails").tablesorter({ 
+					widgets: ['zebra']
+				}); 
+				} 
+			);			
+		   </script>
+          <br/>
+          <a href="./log.xml">Show RESULT</a>
+		  <br/><br/>
+          <table border="0" id="summaryDetails">
+            <thead>
+              <tr>
+				<td bgcolor="yellow">Column Name</td>
+                <td bgcolor="yellow">Column Value</td>
+              </tr>
+            </thead>
+            <tbody>
+              <xsl:for-each select="//col">
+                
+                  <tr style="background-color:#EBF5FB">					
+                    <td>
+                      <xsl:value-of select="@name"/>
+                    </td>
+                    <td>
+                      <xsl:value-of select="@value"/>
+                    </td>                   
+                  </tr>
+                
+                
+              </xsl:for-each>
+            </tbody>
+          </table>
+        </body>
+      </html>
+    </xsl:template>
+  </xsl:stylesheet>
+
+		
+			
+</TestData>

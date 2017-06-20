@@ -1,0 +1,49 @@
+20-06-2017 14:28:55 INFO START OF TEST
+20-06-2017 14:29:02 INFO STEP 0 ~ BROWSER IN USE :- chrome
+20-06-2017 14:29:02 INFO STEP 0 ~ BROWSER VERSION :- 56.0.2924.87
+20-06-2017 14:29:02 INFO STEP 0 ~ URL IN USE :- https://staging.electrical.coop.co.uk
+20-06-2017 14:29:02 INFO STEP 0 ~ DEVICE IN USE:- Mac OS X-10.12.5
+20-06-2017 14:29:02 INFO STEP 1 ~ Asserting page title equals 'Co-op Electrical: Buy Electrical Appliances at Lowest Prices'
+20-06-2017 14:29:02 INFO STEP 2 ~ Taking screenshot
+20-06-2017 14:29:03 INFO STEP 3 ~ Inputting text 'WM7120W' in element 'Search Box'
+20-06-2017 14:29:03 INFO STEP 4 ~ Clicking element 'Search Button'
+20-06-2017 14:29:07 INFO STEP 5 ~ Taking screenshot
+20-06-2017 14:29:07 INFO STEP 6 ~ Clicking element 'Add to Basket Button'
+20-06-2017 14:29:07 INFO STEP 7 ~ Waiting 2 seconds
+20-06-2017 14:29:09 INFO STEP 7 ~ Clicking element 'Checkout Button'
+20-06-2017 14:29:12 INFO STEP 8 ~ Taking screenshot
+20-06-2017 14:29:12 INFO STEP 9 ~ Asserting page title equals 'Your Basket'
+20-06-2017 14:29:12 INFO STEP 10 ~ Clicking element 'Continue to Checkout Button'
+20-06-2017 14:29:13 INFO STEP 11 ~ Taking screenshot
+20-06-2017 14:29:15 INFO STEP 12 ~ Asserting page title equals 'Checkout Page'
+20-06-2017 14:29:15 INFO STEP 13 ~ Inputting Postcode
+20-06-2017 14:29:20 INFO STEP 13 ~ Waiting 2 seconds
+20-06-2017 14:29:22 INFO STEP 14 ~ Clicking element 'PCA Address Text'
+20-06-2017 14:29:22 INFO STEP 15 ~ Validating selected address
+20-06-2017 14:29:22 INFO STEP 16 ~ Selecting option 'Mr' from element 'Title Drop Down'
+20-06-2017 14:29:23 INFO STEP 17 ~ Inputting text 'Test' in element 'First Name Input'
+20-06-2017 14:29:23 INFO STEP 18 ~ Inputting text 'Tester' in element 'Last Name Input'
+20-06-2017 14:29:23 INFO STEP 19 ~ Inputting text '07811111111' in element 'Contact Number Input'
+20-06-2017 14:29:23 INFO STEP 20 ~ Inputting text 'chrispotter@coopdigital.coop' in element 'Email Input'
+20-06-2017 14:29:24 INFO STEP 21 ~ Taking screenshot
+20-06-2017 14:29:24 INFO STEP 22 ~ Clicking element 'Confirm Delivery Details Button'
+20-06-2017 14:29:24 INFO STEP 23 ~ Selecting delivery date
+20-06-2017 14:29:25 INFO STEP 23 ~ Getting Text Value of Element: 'Last Visible Delivery Date Button'
+20-06-2017 14:29:26 INFO STEP 25 ~ Waiting 1 seconds
+20-06-2017 14:29:27 INFO STEP 25 ~ Taking screenshot
+20-06-2017 14:29:27 INFO STEP 26 ~ Clicking element 'Confirm Delivery Date Button'
+20-06-2017 14:29:27 INFO STEP 27 ~ Clicking element Terms and Conditions Checkbox
+20-06-2017 14:29:28 INFO STEP 28 ~ Taking screenshot
+20-06-2017 14:29:28 INFO STEP 29 ~ Clicking element 'Pay for Items Button'
+20-06-2017 14:29:28 INFO STEP 30 ~ Clicking element 'Membership - No Proceed To Payment Button'
+20-06-2017 14:29:29 INFO STEP 31 ~ Inputting text 'Test' in element 'Name on Card Input'
+20-06-2017 14:29:49 WARNING Expected condition failed: waiting for coop.digital.eStores.testAutomation.helpers.BrowserHelper$4@72c927f1 (tried for 20 second(s) with 500 MILLISECONDS interval)
+Build info: version: '3.4.0', revision: 'unknown', time: 'unknown'
+System info: host: 'TCG99519M', ip: 'fe80:0:0:0:40b:1a5a:6d72:4d96%en0', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.12.5', java.version: '1.8.0_131'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.29.461585 (0be2cd95f834e9ee7c46bcc7cf405b483f5ae83b), userDataDir=/var/folders/cn/1dgh3d5n25x3w8qtwwt6nr4w0000gq/T/.org.chromium.Chromium.DGlh3z}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=56.0.2924.87, platform=MAC, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, unexpectedAlertBehaviour=}]
+Session ID: 7a8555ab9a3c749833a787391654c58f
+20-06-2017 14:29:50 INFO STEP 31 ~ Inputting text 'Test' in element 'Name on Card Input'
+20-06-2017 14:30:06 SEVERE Test Failure Occured at unexecpted Location with Message: null
+20-06-2017 14:30:06 SEVERE Test Completed With Fail
+20-06-2017 14:30:06 INFO END OF TEST

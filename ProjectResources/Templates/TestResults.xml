@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE TestResults [<!ATTLIST xsl:stylesheet id ID #REQUIRED>
+]>
+<?xml-stylesheet type="text/xsl" href="#stylesheet"?><TestResults>
+  <xsl:stylesheet id="stylesheet" version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+    <xsl:template match="xsl:stylesheet"/>
+    <xsl:template match="/TestResults">
+      <html>
+        <head>
+          <script src="../ProjectResources/XLST/jquery-3.1.1.js" type="text/javascript"/>
+          <script src="../ProjectResources/XLST/jquery.tablesorter.js" type="text/javascript"/>
+          <link href="../ProjectResources/XLST/theme.blue.css" media="print, projection, screen" rel="stylesheet" type="text/css"/>
+        </head>
+        <style>
+				th{
+			padding-left:10px;
+			padding-right:10px;
+			padding-bottom:2px;
+			padding-top:2px;
+
+		}
+		td{
+			text-align:center;
+		}
+		table, th, td {
+			border: 1px solid black;
+			border-collapse: collapse;
+		}
+		//tr:nth-child(odd) {background: #9acd32}
+		
+	  </style>
+        <body bgcolor="#ebfafa">
+          <script>
+		  			$(document).ready(function() { 
+					$("#summaryDetails").tablesorter({ 
+					widgets: ['zebra']
+				}); 
+				} 
+			);
+			
+			//Scripts written below can be optimised further 
+			function allResults() {
+				var failed = document.getElementsByName("failRow");
+				var pass = document.getElementsByName("passRow");
+				
+				i = 0;
+				while(true){failed.item(i).style.display = "table-row";i = i + 1;
+					if(i>=failed.length){
+						break;
+					}
+				}								
+				i = 0;
+				while(true){									
+					pass.item(i).style.display = "table-row"; i = i + 1;
+					if(i>=pass.length){
+						break;
+					}
+				}
+			}
+			
+			function onlyFail() {							
+				var failed = document.getElementsByName("failRow");
+				var pass = document.getElementsByName("passRow");
+				
+				i = 0;
+				while(true){failed.item(i).style.display = "table-row";i = i + 1;
+					if(i>=failed.length){
+						break;
+					}
+				}								
+				i = 0;
+				while(true){									
+					pass.item(i).style.display = "none"; i = i + 1;
+					if(i>=pass.length){
+						break;
+					}
+				}
+			}
+						
+			function onlyPass() {
+				var failed = document.getElementsByName("failRow");
+				var pass = document.getElementsByName("passRow");
+				
+				i = 0;
+				while(true){failed.item(i).style.display = "none";i = i + 1;
+					if(i>=failed.length){
+						break;
+					}
+				}								
+				i = 0;
+				while(true){									
+					pass.item(i).style.display = "table-row"; i = i + 1;
+					if(i>=pass.length){
+						break;
+					}
+				}
+			}
+			
+			function showStartTime() {
+				
+				var showDate = document.getElementsByName("startDate");
+				i = 0;
+				while(true){	
+					if(document.getElementById('startDateTime').checked){
+					showDate.item(i).style.display = "block";
+					}else{
+					showDate.item(i).style.display = "none";
+					}
+					
+					i = i + 1;
+					if(i>showDate.length){
+						break;
+					}
+				}
+			}
+			
+			function showEndTime() {
+				
+				var showDate = document.getElementsByName("endDate");
+				i = 0;
+				while(true){	
+					if(document.getElementById('endDateTime').checked){
+					showDate.item(i).style.display = "block";
+					}else{
+					showDate.item(i).style.display = "none";
+					}
+					
+					i = i + 1;
+					if(i>showDate.length){
+						break;
+					}
+				}
+			}
+			
+			function showOtherDetails() {				
+				var browserNameObj = document.getElementsByName("browserName");
+				var browserVersionObj = document.getElementsByName("browserVersion");
+				var OSObj = document.getElementsByName("OS");
+				i = 0;
+				while(true){	
+					if(document.getElementById('otherDetails').checked){
+						
+						browserNameObj.item(i).style.display = "block";
+						browserVersionObj.item(i).style.display = "block";
+						OSObj.item(i).style.display = "block";
+					}else{
+						browserNameObj.item(i).style.display = "none";
+						browserVersionObj.item(i).style.display = "none";
+						OSObj.item(i).style.display = "none";
+					}
+					
+					i = i + 1;
+					if(i>browserNameObj.length){
+						break;
+					}
+				}
+				alert(i);
+			}
+			</script>
+          <h1 style="text-align: center; font-family: verdana; color:black">Co-op eStores Test Automation</h1>
+          <h2 style="text-align: center; font-family: verdana; color:black">Execution Run Report</h2>
+          <h3 style="font-family: verdana; color:black">Summary</h3>
+          <table border="1" bordercolor="black">
+            <tr>
+              <th>Application</th>
+              <th>PASS</th>
+              <th>FAIL </th>
+            </tr>
+            <tr>
+              <td>eStores</td>
+              <td bgcolor="#9acd32" style="font-weight:bold;">
+                <xsl:value-of select="count(//TestScript[@application='eStores']/Status[text()='PASS'])"/>
+              </td>
+              <td bgcolor="red">
+                <xsl:value-of select="count(//TestScript[@application='eStores']/Status[text()='FAIL'])"/>
+              </td>
+            </tr>
+          </table>
+          <p>
+            <b>FILTER SUMMARY REPORT:  </b>
+            <input id="filter_1" name="filter" onclick="allResults()" type="radio" value="All"/>
+            <label for="filter_1">ALL RESULT</label>
+            <input id="filter_2" name="filter" onclick="onlyPass()" type="radio" value="OnlyPass"/>
+            <label for="filter_2">ONLY PASS</label>
+            <input id="filter_3" name="filter" onclick="onlyFail()" type="radio" value="OnlyFail"/>
+            <label for="filter_3">ONLY FAIL</label>
+          </p>
+          <h3 style="font-family: verdana; color:black">Details</h3>
+          <input id="startDateTime" onclick="showStartTime()" type="checkbox"/>
+          <span>Show StartTime</span>
+          <input id="endDateTime" onclick="showEndTime()" type="checkbox"/>
+          <span>Show EndTime</span>
+          <input id="otherDetails" onclick="showOtherDetails()" type="checkbox"/>
+          <span>OtherDetails</span>
+          <table border="0" id="summaryDetails">
+            <thead>
+              <tr>
+				<td bgcolor="yellow">RunAttempts</td>
+                <td bgcolor="yellow">Application Name</td>
+                <td bgcolor="yellow">Test Script Name</td>
+                <td bgcolor="yellow">Execution Status</td>
+                <td bgcolor="yellow">Execution Time[hh:mm:ss]</td>
+                <td bgcolor="yellow" name="startDate" style="display:none">Start Date And Time</td>
+                <td bgcolor="yellow" name="endDate" style="display:none">End Date And Time</td>
+                <td bgcolor="yellow" name="browserName" style="display:none">BrowserName</td>
+                <td bgcolor="yellow" name="browserVersion" style="display:none">BrowserVersion</td>
+                <td bgcolor="yellow" name="OS" style="display:none">MachineOS</td>
+              </tr>
+            </thead>
+            <tbody>
+              <xsl:for-each select="//TestScript">
+                <xsl:if test="Status = 'PASS'">
+                  <tr colspan="0" name="passRow" style="background-color:#EBF5FB">
+					<td style="text-align:left;">
+                      <xsl:value-of select="RunAttempt"/>
+                    </td>
+                    <td style="text-align:left;">
+                      <xsl:value-of select="@application"/>
+                    </td>
+                    <td style="text-align:left;" title="{@browser}">
+                      <xsl:value-of select="@name"/>
+                    </td>
+                    <xsl:if test="Status = 'PASS'">
+                      <td style="background-color: #9acd32;">
+                        <a href="{ResultFile}" target="_blank">
+                          <xsl:value-of select="Status"/>
+                        </a>
+                      </td>
+                    </xsl:if>
+                    <td>
+                      <xsl:value-of select="ExecutionTime"/>
+                    </td>
+                    <td name="startDate" style="display:none">
+                      <xsl:value-of select="StartTime"/>
+                    </td>
+                    <td name="endDate" style="display:none">
+                      <xsl:value-of select="EndTime"/>
+                    </td>
+                    <td name="browserName" style="display:none">
+                      <xsl:value-of select="@browser"/>
+                    </td>
+                    <td name="browserVersion" style="display:none">
+                      <xsl:value-of select="@version"/>
+                    </td>
+                    <td name="OS" style="display:none">
+                      <xsl:value-of select="@OS"/>
+                    </td>
+                  </tr>
+                </xsl:if>
+                <xsl:if test="Status != 'PASS'">
+                  <tr colspan="0" name="failRow" style="background-color:#EBF5FB">
+					<td style="text-align:left;">
+                      <xsl:value-of select="RunAttempt"/>
+                    </td>
+                    <td style="text-align:left;">
+                      <xsl:value-of select="@application"/>
+                    </td>
+                    <td style="text-align:left;" title="{@browser}">
+                      <xsl:value-of select="@name"/>
+                    </td>
+                    <xsl:if test="Status != 'PASS'">
+                      <td style="background-color: red;">
+                        <a href="{ResultFile}" target="_blank">
+                          <xsl:value-of select="Status"/>
+                        </a>
+                      </td>
+                    </xsl:if>
+                    <td>
+                      <xsl:value-of select="ExecutionTime"/>
+                    </td>
+                    <xsl:if test="TestStatus = 'FAIL'">
+                      <td style="background-color: red;">
+                        <xsl:value-of select="TestStatus"/>
+                      </td>
+                    </xsl:if>
+                    <xsl:if test="TestStatus = 'NA'">
+                      <td>
+                        <xsl:value-of select="TestStatus"/>
+                      </td>
+                    </xsl:if>
+                    <td name="startDate" style="display:none">
+                      <xsl:value-of select="StartTime"/>
+                    </td>
+                    <td name="endDate" style="display:none">
+                      <xsl:value-of select="EndTime"/>
+                    </td>
+                    <td name="browserName" style="display:none">
+                      <xsl:value-of select="@browser"/>
+                    </td>
+                    <td name="browserVersion" style="display:none">
+                      <xsl:value-of select="@version"/>
+                    </td>
+                    <td name="OS" style="display:none">
+                      <xsl:value-of select="@OS"/>
+                    </td>
+                  </tr>
+                </xsl:if>
+              </xsl:for-each>
+            </tbody>
+          </table>
+        </body>
+      </html>
+    </xsl:template>
+  </xsl:stylesheet>
+
+
+	
+	
+
+
+	
+	
+</TestResults>

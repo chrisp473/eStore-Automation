@@ -1,0 +1,43 @@
+20-06-2017 11:53:26 INFO START OF TEST
+20-06-2017 11:53:31 INFO STEP 0 ~ BROWSER IN USE :- chrome
+20-06-2017 11:53:32 INFO STEP 0 ~ BROWSER VERSION :- 56.0.2924.87
+20-06-2017 11:53:32 INFO STEP 0 ~ URL IN USE :- https://staging.electrical.coop.co.uk
+20-06-2017 11:53:32 INFO STEP 0 ~ DEVICE IN USE:- Mac OS X-10.12.5
+20-06-2017 11:53:32 INFO STEP 1 ~ Asserting page title equals 'Co-op Electrical: Buy Electrical Appliances at Lowest Prices'
+20-06-2017 11:53:32 INFO STEP 2 ~ Taking screenshot
+20-06-2017 11:53:32 INFO STEP 3 ~ Inputting text 'WM7120W' in element 'Search Box'
+20-06-2017 11:53:32 INFO STEP 4 ~ Clicking element 'Search Button'
+20-06-2017 11:53:35 INFO STEP 5 ~ Taking screenshot
+20-06-2017 11:53:36 INFO STEP 6 ~ Clicking element 'Add to Basket Button'
+20-06-2017 11:53:36 INFO STEP 7 ~ Waiting 2 seconds
+20-06-2017 11:53:38 INFO STEP 7 ~ Clicking element 'Checkout Button'
+20-06-2017 11:53:39 INFO STEP 8 ~ Taking screenshot
+20-06-2017 11:53:40 INFO STEP 9 ~ Asserting page title equals 'Your Basket'
+20-06-2017 11:53:40 INFO STEP 10 ~ Clicking element 'Continue to Checkout Button'
+20-06-2017 11:53:42 INFO STEP 11 ~ Taking screenshot
+20-06-2017 11:53:42 INFO STEP 12 ~ Asserting page title equals 'Checkout Page'
+20-06-2017 11:53:42 INFO STEP 13 ~ Inputting Postcode
+20-06-2017 11:53:47 INFO STEP 13 ~ Waiting 2 seconds
+20-06-2017 11:53:49 INFO STEP 14 ~ Clicking element 'PCA Address Text'
+20-06-2017 11:53:49 INFO STEP 15 ~ Validating selected address
+20-06-2017 11:53:49 INFO STEP 16 ~ Selecting option 'Mr' from element 'Title Drop Down'
+20-06-2017 11:53:50 INFO STEP 17 ~ Inputting text 'Test' in element 'First Name Input'
+20-06-2017 11:53:50 INFO STEP 18 ~ Inputting text 'Tester' in element 'Last Name Input'
+20-06-2017 11:53:50 INFO STEP 19 ~ Inputting text '07811111111' in element 'Contact Number Input'
+20-06-2017 11:53:50 INFO STEP 20 ~ Inputting text 'chrispotter@coopdigital.coop' in element 'Email Input'
+20-06-2017 11:53:50 INFO STEP 21 ~ Clicking element 'Confirm Delivery Details Button'
+20-06-2017 11:53:51 INFO STEP 22 ~ Selecting delivery date
+20-06-2017 11:53:51 INFO STEP 22 ~ Getting Text Value of Element: 'Last Visible Delivery Date Button'
+20-06-2017 11:53:52 INFO STEP 24 ~ Waiting 1 seconds
+20-06-2017 11:53:53 INFO STEP 24 ~ Clicking element 'Confirm Delivery Date Button'
+20-06-2017 11:53:53 INFO STEP 25 ~ Clicking element 'Terms and Conditions Checkbox'
+20-06-2017 11:54:13 WARNING Expected condition failed: waiting for coop.digital.eStores.testAutomation.helpers.BrowserHelper$4@2b52c0d6 (tried for 20 second(s) with 500 MILLISECONDS interval)
+20-06-2017 11:54:14 INFO STEP 25 ~ Clicking element 'Terms and Conditions Checkbox'
+20-06-2017 11:54:34 WARNING Expected condition failed: waiting for coop.digital.eStores.testAutomation.helpers.BrowserHelper$4@cdc3aae (tried for 20 second(s) with 500 MILLISECONDS interval)
+20-06-2017 11:54:35 INFO STEP 25 ~ Clicking element 'Terms and Conditions Checkbox'
+20-06-2017 11:54:55 WARNING Expected condition failed: waiting for coop.digital.eStores.testAutomation.helpers.BrowserHelper$4@5471388b (tried for 20 second(s) with 500 MILLISECONDS interval)
+20-06-2017 11:54:56 INFO STEP 25 ~ Clicking element 'Terms and Conditions Checkbox'
+20-06-2017 11:55:16 WARNING Expected condition failed: waiting for coop.digital.eStores.testAutomation.helpers.BrowserHelper$4@142eef62 (tried for 20 second(s) with 500 MILLISECONDS interval)
+20-06-2017 11:55:17 SEVERE Expected condition failed: waiting for coop.digital.eStores.testAutomation.helpers.BrowserHelper$4@142eef62 (tried for 20 second(s) with 500 MILLISECONDS interval)
+20-06-2017 11:55:17 SEVERE Test Completed With Fail
+20-06-2017 11:55:17 INFO END OF TEST

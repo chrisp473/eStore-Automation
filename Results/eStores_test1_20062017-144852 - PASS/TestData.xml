@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE TestData [<!ATTLIST xsl:stylesheet id ID #REQUIRED>
+]>
+<?xml-stylesheet type="text/xsl" href="#stylesheet"?><TestData>
+  <xsl:stylesheet id="stylesheet" version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+    <xsl:template match="xsl:stylesheet"/>
+    <xsl:template match="/TestData">
+      <html>
+        <head>
+        </head>
+        <style>
+
+		td{
+			text-align:left;
+			border: 1px solid black;
+		}
+
+		
+	  </style>
+        <body bgcolor="#ebfafa">
+          <script>
+		  			$(document).ready(function() { 
+					$("#summaryDetails").tablesorter({ 
+					widgets: ['zebra']
+				}); 
+				} 
+			);			
+		   </script>
+          <br/>
+          <a href="./log.xml">Show RESULT</a>
+		  <br/><br/>
+          <table border="0" id="summaryDetails">
+            <thead>
+              <tr>
+				<td bgcolor="yellow">Column Name</td>
+                <td bgcolor="yellow">Column Value</td>
+              </tr>
+            </thead>
+            <tbody>
+              <xsl:for-each select="//col">
+                
+                  <tr style="background-color:#EBF5FB">					
+                    <td>
+                      <xsl:value-of select="@name"/>
+                    </td>
+                    <td>
+                      <xsl:value-of select="@value"/>
+                    </td>                   
+                  </tr>
+                
+                
+              </xsl:for-each>
+            </tbody>
+          </table>
+        </body>
+      </html>
+    </xsl:template>
+  </xsl:stylesheet>
+
+		
+			
+<col name="START" value="20/06/2017 14:48:52"/><col name="END" value="20/06/2017 14:49:25"/><col name="RESULT" value="PASS"/><col name="TestName" value="test1"/><col name="HouseNumber" value="Flat 58"/><col name="Email" value="chrispotter@coopdigital.coop"/><col name="FirstName" value="Test"/><col name="CustomerID" value="1"/><col name="ItemID" value="WM7120W"/><col name="AddressLine3" value="208 Plymouth Grove"/><col name="AddressLine2" value="Plymouth Village"/><col name="AddressLine1" value="Flat 58"/><col name="AddressLine4" value="Manchester"/><col name="ContactNumber" value="07811111111"/><col name="LastName" value="Tester"/><col name="PostCode" value="M13 0AS"/></TestData>

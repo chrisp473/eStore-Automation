@@ -1,0 +1,33 @@
+19-06-2017 16:43:08 INFO START OF TEST
+19-06-2017 16:43:13 INFO STEP 0 ~ BROWSER IN USE :- chrome
+19-06-2017 16:43:13 INFO STEP 0 ~ BROWSER VERSION :- 56.0.2924.87
+19-06-2017 16:43:13 INFO STEP 0 ~ URL IN USE :- https://staging.electrical.coop.co.uk
+19-06-2017 16:43:13 INFO STEP 0 ~ DEVICE IN USE:- Mac OS X-10.12.5
+19-06-2017 16:43:13 INFO STEP 1 ~ Asserting page title equals 'Co-op Electrical: Buy Electrical Appliances at Lowest Prices'
+19-06-2017 16:43:13 INFO STEP 2 ~ Taking screenshot
+19-06-2017 16:43:14 INFO STEP 3 ~ Inputting text 'WM7120W' in element 'Search Box'
+19-06-2017 16:43:14 INFO STEP 4 ~ Clicking element 'Search Button'
+19-06-2017 16:43:17 INFO STEP 5 ~ Taking screenshot
+19-06-2017 16:43:17 INFO STEP 6 ~ Clicking element 'Add to Basket Button'
+19-06-2017 16:43:18 INFO STEP 7 ~ Waiting 2 seconds
+19-06-2017 16:43:20 INFO STEP 7 ~ Clicking element 'Checkout Button'
+19-06-2017 16:43:21 INFO STEP 8 ~ Taking screenshot
+19-06-2017 16:43:22 INFO STEP 9 ~ Asserting page title equals 'Your Basket'
+19-06-2017 16:43:22 INFO STEP 10 ~ Clicking element 'Continue to Checkout Button'
+19-06-2017 16:43:24 INFO STEP 11 ~ Taking screenshot
+19-06-2017 16:43:24 INFO STEP 12 ~ Asserting page title equals 'Checkout Page'
+19-06-2017 16:43:24 INFO STEP 13 ~ Inputting Postcode
+19-06-2017 16:43:28 INFO STEP 13 ~ Waiting 1 seconds
+19-06-2017 16:43:29 INFO STEP 14 ~ Clicking element 'PCA Address Text'
+19-06-2017 16:43:29 INFO STEP 15 ~ Validating selected address
+19-06-2017 16:43:29 INFO STEP 16 ~ Selecting option 'Mr' from element 'Title Drop Down'
+19-06-2017 16:43:30 INFO STEP 17 ~ Inputting text 'Test' in element 'First Name Input'
+19-06-2017 16:43:30 INFO STEP 18 ~ Inputting text 'Tester' in element 'Last Name Input'
+19-06-2017 16:43:30 INFO STEP 19 ~ Inputting text '07811111111' in element 'Contact Number Input'
+19-06-2017 16:43:30 INFO STEP 20 ~ Inputting text 'chrispotter@coopdigital.coop' in element 'Email Input'
+19-06-2017 16:43:31 INFO STEP 21 ~ Clicking element 'Confirm Delivery Details Button'
+19-06-2017 16:43:31 INFO STEP 22 ~ Selecting delivery date
+19-06-2017 16:43:32 INFO STEP 22 ~ Getting Text Value of Element: 'Last Visible Delivery Date Button'
+19-06-2017 16:43:32 WARNING Unparseable date: "27/062017"
+19-06-2017 16:43:32 SEVERE Test Completed With Fail
+19-06-2017 16:43:32 INFO END OF TEST

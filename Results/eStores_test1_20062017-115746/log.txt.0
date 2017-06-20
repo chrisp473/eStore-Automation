@@ -1,0 +1,54 @@
+20-06-2017 11:57:46 INFO START OF TEST
+20-06-2017 11:57:52 INFO STEP 0 ~ BROWSER IN USE :- chrome
+20-06-2017 11:57:52 INFO STEP 0 ~ BROWSER VERSION :- 56.0.2924.87
+20-06-2017 11:57:52 INFO STEP 0 ~ URL IN USE :- https://staging.electrical.coop.co.uk
+20-06-2017 11:57:52 INFO STEP 0 ~ DEVICE IN USE:- Mac OS X-10.12.5
+20-06-2017 11:57:52 INFO STEP 1 ~ Asserting page title equals 'Co-op Electrical: Buy Electrical Appliances at Lowest Prices'
+20-06-2017 11:57:52 INFO STEP 2 ~ Taking screenshot
+20-06-2017 11:57:53 INFO STEP 3 ~ Inputting text 'WM7120W' in element 'Search Box'
+20-06-2017 11:57:53 INFO STEP 4 ~ Clicking element 'Search Button'
+20-06-2017 11:57:56 INFO STEP 5 ~ Taking screenshot
+20-06-2017 11:57:56 INFO STEP 6 ~ Clicking element 'Add to Basket Button'
+20-06-2017 11:57:56 INFO STEP 7 ~ Waiting 2 seconds
+20-06-2017 11:57:58 INFO STEP 7 ~ Clicking element 'Checkout Button'
+20-06-2017 11:58:00 INFO STEP 8 ~ Taking screenshot
+20-06-2017 11:58:00 INFO STEP 9 ~ Asserting page title equals 'Your Basket'
+20-06-2017 11:58:00 INFO STEP 10 ~ Clicking element 'Continue to Checkout Button'
+20-06-2017 11:58:02 INFO STEP 11 ~ Taking screenshot
+20-06-2017 11:58:02 INFO STEP 12 ~ Asserting page title equals 'Checkout Page'
+20-06-2017 11:58:02 INFO STEP 13 ~ Inputting Postcode
+20-06-2017 11:58:07 INFO STEP 13 ~ Waiting 2 seconds
+20-06-2017 11:58:09 INFO STEP 14 ~ Clicking element 'PCA Address Text'
+20-06-2017 11:58:09 INFO STEP 15 ~ Validating selected address
+20-06-2017 11:58:10 INFO STEP 16 ~ Selecting option 'Mr' from element 'Title Drop Down'
+20-06-2017 11:58:10 INFO STEP 17 ~ Inputting text 'Test' in element 'First Name Input'
+20-06-2017 11:58:10 INFO STEP 18 ~ Inputting text 'Tester' in element 'Last Name Input'
+20-06-2017 11:58:10 INFO STEP 19 ~ Inputting text '07811111111' in element 'Contact Number Input'
+20-06-2017 11:58:11 INFO STEP 20 ~ Inputting text 'chrispotter@coopdigital.coop' in element 'Email Input'
+20-06-2017 11:58:11 INFO STEP 21 ~ Clicking element 'Confirm Delivery Details Button'
+20-06-2017 11:58:11 INFO STEP 22 ~ Selecting delivery date
+20-06-2017 11:58:12 INFO STEP 22 ~ Getting Text Value of Element: 'Last Visible Delivery Date Button'
+20-06-2017 11:58:12 INFO STEP 24 ~ Waiting 1 seconds
+20-06-2017 11:58:13 INFO STEP 24 ~ Clicking element 'Confirm Delivery Date Button'
+20-06-2017 11:58:14 INFO STEP 25 ~ Clicking element 'Terms and Conditions Checkbox'
+20-06-2017 11:58:34 WARNING Expected condition failed: waiting for coop.digital.eStores.testAutomation.helpers.BrowserHelper$4@5ae81e1 (tried for 20 second(s) with 500 MILLISECONDS interval)
+Build info: version: '3.4.0', revision: 'unknown', time: 'unknown'
+System info: host: 'TCG99519M', ip: 'fe80:0:0:0:40b:1a5a:6d72:4d96%en0', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.12.5', java.version: '1.8.0_131'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.29.461585 (0be2cd95f834e9ee7c46bcc7cf405b483f5ae83b), userDataDir=/var/folders/cn/1dgh3d5n25x3w8qtwwt6nr4w0000gq/T/.org.chromium.Chromium.hqrkEl}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=56.0.2924.87, platform=MAC, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, unexpectedAlertBehaviour=}]
+Session ID: 1e9aae3067424e4e893a077ee2eaba9b
+20-06-2017 11:58:35 INFO STEP 25 ~ Clicking element 'Terms and Conditions Checkbox'
+20-06-2017 11:58:56 WARNING Expected condition failed: waiting for coop.digital.eStores.testAutomation.helpers.BrowserHelper$4@4152d38d (tried for 20 second(s) with 500 MILLISECONDS interval)
+Build info: version: '3.4.0', revision: 'unknown', time: 'unknown'
+System info: host: 'TCG99519M', ip: 'fe80:0:0:0:40b:1a5a:6d72:4d96%en0', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.12.5', java.version: '1.8.0_131'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.29.461585 (0be2cd95f834e9ee7c46bcc7cf405b483f5ae83b), userDataDir=/var/folders/cn/1dgh3d5n25x3w8qtwwt6nr4w0000gq/T/.org.chromium.Chromium.hqrkEl}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=56.0.2924.87, platform=MAC, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, unexpectedAlertBehaviour=}]
+Session ID: 1e9aae3067424e4e893a077ee2eaba9b
+20-06-2017 11:58:57 INFO STEP 25 ~ Clicking element 'Terms and Conditions Checkbox'
+20-06-2017 11:59:17 WARNING Expected condition failed: waiting for coop.digital.eStores.testAutomation.helpers.BrowserHelper$4@7689ddef (tried for 20 second(s) with 500 MILLISECONDS interval)
+Build info: version: '3.4.0', revision: 'unknown', time: 'unknown'
+System info: host: 'TCG99519M', ip: 'fe80:0:0:0:40b:1a5a:6d72:4d96%en0', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.12.5', java.version: '1.8.0_131'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.29.461585 (0be2cd95f834e9ee7c46bcc7cf405b483f5ae83b), userDataDir=/var/folders/cn/1dgh3d5n25x3w8qtwwt6nr4w0000gq/T/.org.chromium.Chromium.hqrkEl}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=56.0.2924.87, platform=MAC, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, unexpectedAlertBehaviour=}]
+Session ID: 1e9aae3067424e4e893a077ee2eaba9b
+20-06-2017 11:59:18 INFO STEP 25 ~ Clicking element 'Terms and Conditions Checkbox'

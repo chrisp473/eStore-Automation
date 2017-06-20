@@ -1,0 +1,53 @@
+<!-- Configuration File for Automated Testing Packs -->
+<!-- MIP Automation Tests -->
+<IntialSetup>
+	
+	<Computer Name="MachineName/default">	
+			<Environment_To_Use>ENV_NAME</Environment_To_Use>		
+			<Selenium_Test_Engine_path>Y:\Selenium Automation Projects\Digital</Selenium_Test_Engine_path> <!-- Path should not end with \-->
+			<application>APPLICATION_NAME</application>
+			<BrowserVersionPath></BrowserVersionPath>			<!-- Path of the folder which contains FF binary, use \\ while seperating folder name -->
+			<driverType>DRIVER_TYPE-USE_FROM_COMMENT_SECTION</driverType>					<!-- #valid values for driverType property is:- LOCAL / REMOTE, if blank default value is Local --> 
+			<deviceType>DEVICE_TYPE-USE_FROM_COMMENT_SECTION</deviceType>					<!-- #valid values for deviceType property is:- DESKTOP / ANDROID / IOS, if blank default value is DESKTOP  -->
+			<deviceName>DEVICE_Name-USE_FROM_COMMENT_SECTION</deviceName>					<!-- #valid values for the DeviceName property is:- DESKTOP[local], WINDOWS/MAC/[REMOTE], Actual device name[When running on device], if blank default value is WINDOWS -->
+			<BrowserName>BROWSER_NAME-USE_FROM_COMMENT_SECTION</BrowserName>					<!-- #valid values for browser property is:- FIREFOX / CHROME / SAFARI / EDGE / IE, if blank default value is FIREFOX -->
+			<FireFoxProfile></FireFoxProfile>			<!-- #Firefox profile name - if no value is provided a Selenium launch the firefox browser with a new profile.#FireFoxProfile is useful when Firefox needs to be launched with specific profile to utilize existing add-in associated for Firefox for that add-in-->	
+			<RemoteServerIP></RemoteServerIP>			<!-- #IP Address of the Remote machine - Provide details when scripts needs to be executed in remote machine, value should be specified if property "DriverType" is set to "REMOTE" -->
+			<RemoteServerport></RemoteServerport>		<!-- #Port Number of the Remote machine when selenium standalone server is running- Provide details when scripts needs to be executed in remote machine, value should be specified if property "DriverType" is set to "REMOTE"  -->
+			<AppiumServerIP></AppiumServerIP>			<!-- #Specify IP address or the machineName running the appium server, if appium server is running on the same machine then "localhost" can be used as alternative-->
+			<AppiumServerPort></AppiumServerPort>		<!-- #Specify port number or the machineName running the appium server, if appium server is running on the same machine then "localhost" can be used as alternative-->
+			<OverrideResultsSummary>Y</OverrideResultsSummary> <!-- Recommended value is 'Y', previous result run details should not be shown in Result report, setting value  -->
+	</Computer>
+
+	<!-- Environment details -->
+	<Environment Name="ENV_NAME">					
+			<!-- Please do not change the system property Names specified below.If you wish to add more property name please add in user defined section-->
+			<SeleniumSystemProperties>	
+				<url>APPLICATION_URL</url>
+				<UserDefined_1></UserDefined_1>
+				<UserDefined_2></UserDefined_2>
+				<UserDefined_N>=</UserDefined_N>
+				<EnableHTMLLog></EnableHTMLLog> 		<!--To Enable HTML reporting provide value Y or YES case insensitive) -->	
+			</SeleniumSystemProperties>
+			
+			<QTPEnvironmentVariables>	
+				<!--If no value is specified then default value would be "Test Automation Results"  -->
+				<QC_REPORTING_RESULT_FOLDER_NAME></QC_REPORTING_RESULT_FOLDER_NAME>
+				<UserDefined_1></UserDefined_1>	
+				<UserDefined_2></UserDefined_2>
+				<UserDefined_N-1></UserDefined_N-1>
+				<UserDefined_N></UserDefined_N>
+			</QTPEnvironmentVariables>	
+
+			<QC_Details EnableQCUpdate="YES/NO">	
+				<QC_URL>PROVIDE DETAILS</QC_URL>	
+				<QC_Domain>PROVIDE_DETAILS</QC_Domain>
+				<QC_Project>PROVIDE_DETAILS</QC_Project>
+				<QC_UserName>PROVIDE_DETAILS</QC_UserName>
+				<QC_Password>PROVIDE_DETAILS</QC_Password>				<!--base64 encoded password-->	
+				<QC_TestSetID>PROVIDE_DETAILS</QC_TestSetID>			
+			</QC_Details>
+	</Environment>	
+	
+	
+</IntialSetup> 

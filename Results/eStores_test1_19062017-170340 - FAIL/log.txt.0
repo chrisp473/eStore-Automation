@@ -1,0 +1,22 @@
+19-06-2017 17:03:41 INFO START OF TEST
+19-06-2017 17:03:47 INFO STEP 0 ~ BROWSER IN USE :- chrome
+19-06-2017 17:03:47 INFO STEP 0 ~ BROWSER VERSION :- 56.0.2924.87
+19-06-2017 17:03:47 INFO STEP 0 ~ URL IN USE :- https://staging.electrical.coop.co.uk
+19-06-2017 17:03:47 INFO STEP 0 ~ DEVICE IN USE:- Mac OS X-10.12.5
+19-06-2017 17:03:47 INFO STEP 1 ~ Asserting page title equals 'Co-op Electrical: Buy Electrical Appliances at Lowest Prices'
+19-06-2017 17:03:47 INFO STEP 2 ~ Taking screenshot
+19-06-2017 17:03:48 INFO STEP 3 ~ Inputting text 'WM7120W' in element 'Search Box'
+19-06-2017 17:03:48 INFO STEP 4 ~ Clicking element 'Search Button'
+19-06-2017 17:03:49 INFO STEP 5 ~ Taking screenshot
+19-06-2017 17:03:49 SEVERE Test Failure Occured at unexecpted Location with Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=56.0.2924.87)
+  (Driver info: chromedriver=2.29.461585 (0be2cd95f834e9ee7c46bcc7cf405b483f5ae83b),platform=Mac OS X 10.12.5 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 14 milliseconds
+Build info: version: '3.4.0', revision: 'unknown', time: 'unknown'
+System info: host: 'TCG99519M', ip: 'fe80:0:0:0:1491:779d:73fd:62dd%en0', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.12.5', java.version: '1.8.0_131'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.29.461585 (0be2cd95f834e9ee7c46bcc7cf405b483f5ae83b), userDataDir=/var/folders/cn/1dgh3d5n25x3w8qtwwt6nr4w0000gq/T/.org.chromium.Chromium.MOFEbz}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=56.0.2924.87, platform=MAC, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, unexpectedAlertBehaviour=}]
+Session ID: 880ca66dfe9332bd2a3934aeed5a38f7
+19-06-2017 17:03:49 SEVERE Test Completed With Fail
+19-06-2017 17:03:49 INFO END OF TEST

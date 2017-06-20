@@ -1,0 +1,7 @@
+19-06-2017 16:17:07 INFO START OF TEST
+19-06-2017 16:17:22 SEVERE An Exception was generated while trying to initialise test, error message : 'Reached error page: about:neterror?e=nssFailure2&u=https%3A//staging.electrical.coop.co.uk/&c=UTF-8&f=regular&d=The%20connection%20to%20staging.electrical.coop.co.uk%20was%20interrupted%20while%20the%20page%20was%20loading.
+Build info: version: '3.4.0', revision: 'unknown', time: 'unknown'
+System info: host: 'TCG99519M', ip: 'fe80:0:0:0:1491:779d:73fd:62dd%en0', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.12.5', java.version: '1.8.0_131'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Capabilities [{moz:profile=/var/folders/cn/1dgh3d5n25x3w8qtwwt6nr4w0000gq/T/rust_mozprofile.5wPj6vCbjuBa, rotatable=false, timeouts={implicit=0.0, pageLoad=300000.0, script=30000.0}, pageLoadStrategy=normal, platform=ANY, specificationLevel=0.0, moz:accessibilityChecks=false, acceptInsecureCerts=true, browserVersion=53.0.3, platformVersion=16.6.0, moz:processID=1319.0, browserName=firefox, javascriptEnabled=true, platformName=darwin}]
+Session ID: 3d22aa43-d32c-4044-87d2-100de819b54c'

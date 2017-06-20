@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE doc [<!ATTLIST xsl:stylesheet id ID #REQUIRED>
+]>
+<?xml-stylesheet type="text/xsl" href="#stylesheet"?><doc>
+ 
+ <xsl:stylesheet id="stylesheet" version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+
+  <xsl:template match="xsl:stylesheet"/>
+
+  <xsl:decimal-format name="percent"/>
+  <xsl:decimal-format decimal-separator="." name="average"/>
+
+  <xsl:template match="/doc">
+   <html>
+    <head>
+    <style>
+      h2{
+      font-family: Courier, Courier New, monospace;
+      font-size: 20px;
+      }
+	  
+	  h3{
+      font-family: Courier, Courier New, monospace;
+      font-size: 18px;
+	  text-decoration: underline;
+      }	  
+	  
+      body{
+      font-family: Courier New, monospace;
+      }
+      p{
+      font-size: 16px;
+      }
+      table{
+      font-size: 16px;
+	  border: 1px solid black;
+	  border-collapse: collapse;
+      }
+      .StepStatus{
+      text-align:left;
+      }
+      .Description{
+      text-align:left;
+      }
+      .seen{
+      text-align:center;
+      }
+      .rating{
+      text-align:right;
+      }
+      .length{
+      text-align:center;
+      }
+	  
+	  /* The Modal (background) */
+	.modal {
+		display: none; /* Hidden by default */
+		position: fixed; /* Stay in place */
+		z-index: 1; /* Sit on top */
+		padding-top: 100px; /* Location of the box */
+		left: 0;
+		top: 0;
+		width: 100%; /* Full width */
+		height: 100%; /* Full height */
+		overflow: auto; /* Enable scroll if needed */
+		background-color: rgb(0,0,0); /* Fallback color */
+		background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+	}
+
+	/* Modal Content (image) */
+	.modal-content {
+		margin: auto;
+		display: block;
+		width: 100%;
+		max-width: 1000px;
+	}
+
+
+	/* The Close Button */
+	.close {
+		position: absolute;
+		top: 15px;
+		right: 35px;
+		color: #f1f1f1;
+		font-size: 40px;
+		font-weight: bold;
+		
+	}
+
+	.next{
+		position: absolute;
+		top: 40%;
+		right: 35px;
+		color: #30DAE9;
+		font-size: 40px;
+		font-weight: bold;
+		cursor: pointer;
+		
+	}
+
+	.previous{
+		position: absolute;
+		top: 40%;
+		left: 35px;
+		color: #30DAE9;
+		font-size: 40px;
+		font-weight: bold;
+		cursor: pointer;
+		
+	}
+
+	.hover,
+	.focus {
+		cursor: pointer;
+		
+	}
+     </style>
+    </head>
+    <body>
+	
+	<div class="modal" id="myModal">
+		  <img class="modal-content" id="img01"/>
+		  <span class="close hover focus" id="close">Close</span>
+		  <span class="next" id="next">&gt;</span>
+		  <span class="previous" id="previous">&lt;</span>
+	</div>
+     
+	<xsl:for-each select="OtherDetails/TestStart">
+		<h2>TestScript Name : <xsl:value-of select="@testName"/></h2>
+		<h3>Execution Details</h3>	
+		<table border="1">
+			<xsl:if test="@executionStatus ='Pass' or @executionStatus ='PASS'">
+				<tr><td style="background-color:#666 ; color:#fff">Execution Status </td><td style="background-color:#28B463; color:#FDFEFE"><xsl:value-of select="@executionStatus"/></td></tr>
+			</xsl:if>
+			<xsl:if test="@executionStatus ='Fail' or @executionStatus ='FAIL'">
+				<tr><td style="background-color:#666 ; color:#fff">Execution Status </td><td style="background-color:#B03A2E; color:#FDFEFE"><xsl:value-of select="@executionStatus"/></td></tr>
+			</xsl:if>
+			<tr><td style="background-color:#666 ; color:#fff">Execution Date </td><td><xsl:value-of select="@executionDate"/></td></tr>		
+			<tr><td style="background-color:#666 ; color:#fff">Script Execution Time </td><td><xsl:value-of select="@executionTime"/></td></tr>	
+			<tr><td style="background-color:#666 ; color:#fff">Host Name</td><td><xsl:value-of select="@machineName"/></td></tr>	
+			<tr><td style="background-color:#666 ; color:#fff">TestData</td><td><a href="./TestData.xml">Show TestData</a></td></tr>			
+		</table>		
+	</xsl:for-each>
+	 
+	 
+     <br/>
+	 
+	 <h3>Test Steps</h3>
+	 
+     <table border="1">
+      <tr>
+       <th style="background-color:#666 ; color:#fff">Step #</th>
+       <th style="background-color:#666 ; color:#fff">Step Status</th>
+       <th style="background-color:#666 ; color:#fff">Step Description</th>
+      </tr>
+	  
+	  <p id="warnCheck" style="display:none;background-color:#FCF3CF"><input id="warnCheckBox" onclick="showWarnings()" type="checkbox"/>Show warnings</p>
+		<xsl:for-each select="Steps/Step">
+       <xsl:choose>
+        
+			<xsl:when test="StepStatus = &quot;Pass&quot; and StepNum!=&quot;Step : 0&quot;  ">
+				 <tr style="background-color:#D1F2EB; color:#000">
+					  <td class="StepNum" style="width:100px"><xsl:value-of select="StepNum"/></td>
+					  <td class="StepStatus"><xsl:value-of select="StepStatus"/></td>
+					  <td class="Description"><xsl:value-of select="Description"/></td>          
+				 </tr>
+			</xsl:when>
+			
+			<xsl:when test="StepStatus = &quot;Fail&quot; and StepNum!=&quot;Step : 0&quot;  ">
+				 <tr name="myFails" style="background-color:#FADBD8; color:#000">
+					  <td class="StepNum" style="width:100px"><xsl:value-of select="StepNum"/></td>
+					  <td class="StepStatus"><xsl:value-of select="StepStatus"/></td>
+					  <td class="Description"><xsl:value-of select="Description"/></td>          
+				 </tr>
+			</xsl:when>		
+			
+			<xsl:when test="StepStatus = &quot;Warning&quot; and StepNum!=&quot;Step : 0&quot;  ">
+				 <tr name="myWarning" style="background-color:#FCF3CF; color:#000">
+					  <td class="StepNum" style="width:100px"><xsl:value-of select="StepNum"/></td>
+					  <td class="StepStatus"><xsl:value-of select="StepStatus"/></td>
+					  <td class="Description"><xsl:value-of select="Description"/></td>          
+				 </tr>
+			</xsl:when>
+			
+			<xsl:when test="StepStatus = &quot;Info&quot; and StepNum!=&quot;Step : 0&quot;  ">
+				 <tr style="background-color:#EBF5FB; color:#000">
+					  <td class="StepNum" style="width:100px"><xsl:value-of select="StepNum"/></td>
+					  <td class="StepStatus"><xsl:value-of select="StepStatus"/></td>
+					  <td class="Description"><xsl:value-of select="Description"/></td>          
+				 </tr>
+			</xsl:when>
+			
+			<xsl:when test="StepStatus = &quot;Pass&quot; and StepNum=&quot;Step : 0&quot;  ">
+				 <tr style="background-color:#3498DB; color:#FDFEFE">
+					  
+					  <td class="StepStatus" colspan="2">Info</td>
+					  <td class="Description"><xsl:value-of select="Description"/></td>          
+				 </tr>
+			</xsl:when>
+			
+			<xsl:when test="StepStatus = &quot;SCREENSHOT&quot;  ">
+				 <tr style="background-color:#EBF5FB; color:#000">
+					  <td align="center" class="StepStatus" colspan="2"><xsl:value-of select="StepStatus"/></td>
+					  <td class="Description"><img alt="Image Missing In Same Directory" class="hover focus" height="100" name="myImg" src="{Description}" width="100"/></td>          
+				 </tr>
+			</xsl:when>       
+	   </xsl:choose>
+      </xsl:for-each>
+	  
+	  
+    </table>
+	 
+	<script>
+	
+
+	var modal = document.getElementById("myModal");
+	var modalImg = document.getElementById("img01");
+	var span = document.getElementById("close"); 
+	var img = document.getElementsByName("myImg");
+	var objPrevious = document.getElementById("previous"); 
+	var objNext = document.getElementById("next");	
+	//alert(img.length);
+	
+	i = 0;
+	while(true){		
+		img.item(i).onclick = function(){
+			modal.style.display = "block";
+    		modalImg.src = this.src;
+			span.focus(); 
+    	}
+		i = i + 1;
+		if(i&gt;=img.length){
+			break;
+		}
+	}
+	
+	span.onclick = function() { 
+		modal.style.display = "none";
+	}
+	
+	objPrevious.onclick = function() { 
+		i = 0;
+		while(true){				
+			if(img.item(i).src==modalImg.src){
+				if((i)&gt;0){
+					modalImg.src = img.item(i-1).src;
+					break;
+				}
+			} 
+			i = i + 1;
+			if(i&gt;=img.length){
+				break;
+			}
+		}
+	}	
+	
+	objNext.onclick = function() { 
+		i = 0;
+		while(true){		
+			if(img.item(i).src==modalImg.src){
+				if((img.length &gt; i+1)){
+					modalImg.src = img.item(i+1).src;	
+					break;
+				}
+			} 
+			i = i + 1;
+			if(i&gt;=img.length){
+				break;
+			}
+		}
+	}
+
+
+	
+	var failEle = document.getElementsByName('myFails');
+	if(failEle.length&gt;0){
+		document.getElementById('warnCheck').style.display='none';
+	}else{
+		var warnEle = document.getElementsByName('myWarning');
+		if(warnEle.length&gt;0){
+			document.getElementById('warnCheck').style.display='block';
+			i=0;
+			while(true){
+				warnEle.item(i).style.display='none';
+				i=i+1;
+				if(i&gt;=warnEle.length){
+					break;
+				}
+			}
+			
+		}
+	}
+	
+	function showWarnings(){
+		var warnEle = document.getElementsByName('myWarning');
+		var warnCheckEle = document.getElementById('warnCheckBox');
+		if(warnEle.length&gt;0){			
+			i=0;
+			while(true){
+				if(warnCheckEle.checked){
+					warnEle.item(i).style.display="table-row";
+				}else{
+				warnEle.item(i).style.display='none';
+				}
+				i=i+1;
+				if(i&gt;=warnEle.length){
+					break;
+				}
+			}
+			
+		}
+	}	
+	</script>
+    </body>
+   </html>
+  </xsl:template>
+ </xsl:stylesheet>
+
+ 
+ <OtherDetails>
+ <TestStart executionDate="Mon Jun 19 16:50:38 BST 2017" executionStatus="FAIL" executionTime="00:00:25 [hh:MM:ss]" machineName="TCG99519M" testName="test1"/></OtherDetails>
+ 
+ <Steps>	  
+ <Step><StepNum>Step : 0</StepNum><StepStatus>Pass</StepStatus><Description>BROWSER IN USE :- chrome</Description></Step><Step><StepNum>Step : 0</StepNum><StepStatus>Pass</StepStatus><Description>BROWSER VERSION :- 56.0.2924.87</Description></Step><Step><StepNum>Step : 0</StepNum><StepStatus>Pass</StepStatus><Description>URL IN USE :- https://staging.electrical.coop.co.uk</Description></Step><Step><StepNum>Step : 0</StepNum><StepStatus>Pass</StepStatus><Description>DEVICE IN USE:- Mac OS X-10.12.5</Description></Step><Step><StepNum>Step : 1</StepNum><StepStatus>Pass</StepStatus><Description>Asserting page title equals 'Co-op Electrical: Buy Electrical Appliances at Lowest Prices'</Description></Step><Step><StepNum>Step : 2</StepNum><StepStatus>Pass</StepStatus><Description>Taking screenshot</Description></Step><Step><StepNum>Step : 2</StepNum><StepStatus>SCREENSHOT</StepStatus><Description>CAPTURE_STEP2_19062017-165045.png</Description></Step><Step><StepNum>Step : 3</StepNum><StepStatus>Pass</StepStatus><Description>Inputting text 'WM7120W' in element 'Search Box'</Description></Step><Step><StepNum>Step : 4</StepNum><StepStatus>Pass</StepStatus><Description>Clicking element 'Search Button'</Description></Step><Step><StepNum>Step : 5</StepNum><StepStatus>Pass</StepStatus><Description>Taking screenshot</Description></Step><Step><StepNum>Step : 5</StepNum><StepStatus>SCREENSHOT</StepStatus><Description>CAPTURE_STEP5_19062017-165049.png</Description></Step><Step><StepNum>Step : 6</StepNum><StepStatus>Pass</StepStatus><Description>Clicking element 'Add to Basket Button'</Description></Step><Step><StepNum>Step : 7</StepNum><StepStatus>Pass</StepStatus><Description>Waiting 2 seconds</Description></Step><Step><StepNum>Step : 7</StepNum><StepStatus>Pass</StepStatus><Description>Clicking element 'Checkout Button'</Description></Step><Step><StepNum>Step : 8</StepNum><StepStatus>Pass</StepStatus><Description>Taking screenshot</Description></Step><Step><StepNum>Step : 8</StepNum><StepStatus>SCREENSHOT</StepStatus><Description>CAPTURE_STEP8_19062017-165053.png</Description></Step><Step><StepNum>Step : 9</StepNum><StepStatus>Pass</StepStatus><Description>Asserting page title equals 'Your Basket'</Description></Step><Step><StepNum>Step : 10</StepNum><StepStatus>Pass</StepStatus><Description>Clicking element 'Continue to Checkout Button'</Description></Step><Step><StepNum>Step : 11</StepNum><StepStatus>Pass</StepStatus><Description>Taking screenshot</Description></Step><Step><StepNum>Step : 11</StepNum><StepStatus>SCREENSHOT</StepStatus><Description>CAPTURE_STEP11_19062017-165055.png</Description></Step><Step><StepNum>Step : 12</StepNum><StepStatus>Pass</StepStatus><Description>Asserting page title equals 'Checkout Page'</Description></Step><Step><StepNum>Step : 13</StepNum><StepStatus>Pass</StepStatus><Description>Inputting Postcode</Description></Step><Step><StepNum>Step : 13</StepNum><StepStatus>Pass</StepStatus><Description>Waiting 1 seconds</Description></Step><Step><StepNum>Step : 14</StepNum><StepStatus>Pass</StepStatus><Description>Clicking element 'PCA Address Text'</Description></Step><Step><StepNum>Step : 15</StepNum><StepStatus>Pass</StepStatus><Description>Validating selected address</Description></Step><Step><StepNum>Step : 16</StepNum><StepStatus>Pass</StepStatus><Description>Selecting option 'Mr' from element 'Title Drop Down'</Description></Step><Step><StepNum>Step : 17</StepNum><StepStatus>Pass</StepStatus><Description>Inputting text 'Test' in element 'First Name Input'</Description></Step><Step><StepNum>Step : 18</StepNum><StepStatus>Pass</StepStatus><Description>Inputting text 'Tester' in element 'Last Name Input'</Description></Step><Step><StepNum>Step : 19</StepNum><StepStatus>Pass</StepStatus><Description>Inputting text '07811111111' in element 'Contact Number Input'</Description></Step><Step><StepNum>Step : 20</StepNum><StepStatus>Pass</StepStatus><Description>Inputting text 'chrispotter@coopdigital.coop' in element 'Email Input'</Description></Step><Step><StepNum>Step : 21</StepNum><StepStatus>Pass</StepStatus><Description>Clicking element 'Confirm Delivery Details Button'</Description></Step><Step><StepNum>Step : 22</StepNum><StepStatus>Pass</StepStatus><Description>Selecting delivery date</Description></Step><Step><StepNum>Step : 22</StepNum><StepStatus>Pass</StepStatus><Description>Getting Text Value of Element: 'Last Visible Delivery Date Button'</Description></Step><Step><StepNum>Step : 23</StepNum><StepStatus>Warning</StepStatus><Description>String index out of range: 5</Description></Step><Step><StepNum>Step : 23</StepNum><StepStatus>SCREENSHOT</StepStatus><Description>EXCEPTION_STEP23_19062017-165104.png</Description></Step><Step><StepNum>Step : 23</StepNum><StepStatus>Fail</StepStatus><Description>Test Completed With Fail</Description></Step></Steps>
+ 
+ 
+</doc>
