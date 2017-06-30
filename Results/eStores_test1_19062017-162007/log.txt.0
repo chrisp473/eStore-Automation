@@ -1,3 +1,0 @@
-19-06-2017 16:20:07 INFO START OF TEST
-19-06-2017 16:20:14 INFO STEP 0 ~ BROWSER IN USE :- chrome
-19-06-2017 16:20:14 SEVERE An Exception was generated while trying to initialise test, error message : 'null'

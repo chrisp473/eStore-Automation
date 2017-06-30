@@ -1,7 +1,0 @@
-19-06-2017 16:16:05 INFO START OF TEST
-19-06-2017 16:16:55 SEVERE An Exception was generated while trying to initialise test, error message : 'Failed to decode response from marionette
-Build info: version: '3.4.0', revision: 'unknown', time: 'unknown'
-System info: host: 'TCG99519M', ip: 'fe80:0:0:0:1491:779d:73fd:62dd%en0', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.12.5', java.version: '1.8.0_131'
-Driver info: org.openqa.selenium.firefox.FirefoxDriver
-Capabilities [{moz:profile=/var/folders/cn/1dgh3d5n25x3w8qtwwt6nr4w0000gq/T/rust_mozprofile.fjggjC9UA4yW, rotatable=false, timeouts={implicit=0.0, pageLoad=300000.0, script=30000.0}, pageLoadStrategy=normal, platform=ANY, specificationLevel=0.0, moz:accessibilityChecks=false, acceptInsecureCerts=true, browserVersion=53.0.3, platformVersion=16.6.0, moz:processID=1308.0, browserName=firefox, javascriptEnabled=true, platformName=darwin}]
-Session ID: 17d3fb4a-b72e-2748-ac9c-881f142f1ded'
