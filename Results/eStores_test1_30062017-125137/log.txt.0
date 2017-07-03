@@ -1,0 +1,51 @@
+30-06-2017 12:51:37 INFO START OF TEST
+30-06-2017 12:51:43 INFO STEP 0 ~ BROWSER IN USE :- chrome
+30-06-2017 12:51:43 INFO STEP 0 ~ BROWSER VERSION :- 56.0.2924.87
+30-06-2017 12:51:43 INFO STEP 0 ~ URL IN USE :- https://staging.electrical.coop.co.uk
+30-06-2017 12:51:43 INFO STEP 0 ~ DEVICE IN USE:- Mac OS X-10.12.5
+30-06-2017 12:51:43 INFO STEP 1 ~ Asserting page title equals 'Co-op Electrical: Buy Electrical Appliances at Lowest Prices'
+30-06-2017 12:51:44 INFO STEP 2 ~ Taking screenshot
+30-06-2017 12:51:44 INFO STEP 3 ~ Inputting text 'WM7120W' in element 'Search Box'
+30-06-2017 12:51:44 INFO STEP 4 ~ Clicking element 'Search Button'
+30-06-2017 12:51:47 INFO STEP 5 ~ Taking screenshot
+30-06-2017 12:51:47 INFO STEP 6 ~ Clicking element 'Add to Basket Button'
+30-06-2017 12:51:48 INFO STEP 7 ~ Waiting 2 seconds
+30-06-2017 12:51:50 INFO STEP 7 ~ Clicking element 'Checkout Button'
+30-06-2017 12:51:51 INFO STEP 8 ~ Taking screenshot
+30-06-2017 12:51:51 INFO STEP 9 ~ Asserting page title equals 'Your Basket'
+30-06-2017 12:51:51 INFO STEP 10 ~ Clicking element 'Continue to Checkout Button'
+30-06-2017 12:51:53 INFO STEP 11 ~ Taking screenshot
+30-06-2017 12:51:54 INFO STEP 12 ~ Asserting page title equals 'Checkout Page'
+30-06-2017 12:51:54 INFO STEP 13 ~ Inputting Postcode
+30-06-2017 12:51:58 INFO STEP 13 ~ Waiting 2 seconds
+30-06-2017 12:52:00 INFO STEP 14 ~ Clicking element 'PCA Address Text'
+30-06-2017 12:52:01 INFO STEP 15 ~ Validating selected address
+30-06-2017 12:52:01 INFO STEP 16 ~ Selecting option 'Mr' from element 'Title Drop Down'
+30-06-2017 12:52:01 INFO STEP 17 ~ Inputting text 'Test' in element 'First Name Input'
+30-06-2017 12:52:02 INFO STEP 18 ~ Inputting text 'Tester' in element 'Last Name Input'
+30-06-2017 12:52:02 INFO STEP 19 ~ Inputting text '07811111111' in element 'Contact Number Input'
+30-06-2017 12:52:02 INFO STEP 20 ~ Inputting text 'chrispotter@coopdigital.coop' in element 'Email Input'
+30-06-2017 12:52:02 INFO STEP 21 ~ Taking screenshot
+30-06-2017 12:52:03 INFO STEP 22 ~ Clicking element 'Confirm Delivery Details Button'
+30-06-2017 12:52:03 INFO STEP 23 ~ Selecting delivery date
+30-06-2017 12:52:03 INFO STEP 23 ~ Getting Text Value of Element: 'Last Visible Delivery Date Button'
+30-06-2017 12:52:04 INFO STEP 24 ~ Clicking element 'Delivery Date Scroll Right Button'
+30-06-2017 12:52:46 INFO STEP 25 ~ Getting Text Value of Element: 'Last Visible Delivery Date Button'
+30-06-2017 12:54:02 INFO STEP 26 ~ Getting Text Value of Element: 'Last Visible Delivery Date Button'
+30-06-2017 12:54:02 INFO STEP 27 ~ Clicking element 'Delivery Date Scroll Right Button'
+30-06-2017 12:54:03 INFO STEP 28 ~ Getting Text Value of Element: 'Last Visible Delivery Date Button'
+30-06-2017 12:54:35 INFO STEP 29 ~ Getting Text Value of Element: 'Last Visible Delivery Date Button'
+30-06-2017 12:54:35 INFO STEP 30 ~ Clicking element 'Delivery Date Scroll Right Button'
+30-06-2017 12:54:35 INFO STEP 31 ~ Getting Text Value of Element: 'Last Visible Delivery Date Button'
+30-06-2017 12:54:49 INFO STEP 32 ~ Getting Text Value of Element: 'Last Visible Delivery Date Button'
+30-06-2017 12:54:49 INFO STEP 33 ~ Clicking element 'Delivery Date Scroll Right Button'
+30-06-2017 12:54:49 INFO STEP 34 ~ Getting Text Value of Element: 'Last Visible Delivery Date Button'
+30-06-2017 12:55:05 INFO STEP 35 ~ Getting Text Value of Element: 'Last Visible Delivery Date Button'
+30-06-2017 12:55:05 INFO STEP 36 ~ Clicking element 'Delivery Date Scroll Right Button'
+30-06-2017 12:55:05 INFO STEP 37 ~ Getting Text Value of Element: 'Last Visible Delivery Date Button'
+30-06-2017 12:55:21 INFO STEP 38 ~ Getting Text Value of Element: 'Last Visible Delivery Date Button'
+30-06-2017 12:55:21 INFO STEP 39 ~ Clicking element 'Delivery Date Scroll Right Button'
+30-06-2017 12:55:21 INFO STEP 40 ~ Getting Text Value of Element: 'Last Visible Delivery Date Button'
+30-06-2017 12:55:25 INFO STEP 41 ~ Getting Text Value of Element: 'Last Visible Delivery Date Button'
+30-06-2017 12:55:25 INFO STEP 42 ~ Clicking element 'Delivery Date Scroll Right Button'
+30-06-2017 12:55:25 INFO STEP 43 ~ Getting Text Value of Element: 'Last Visible Delivery Date Button'

@@ -1,0 +1,51 @@
+03-07-2017 10:48:52 INFO START OF TEST
+03-07-2017 10:48:58 INFO STEP 0 ~ BROWSER IN USE :- chrome
+03-07-2017 10:48:58 INFO STEP 0 ~ BROWSER VERSION :- 56.0.2924.87
+03-07-2017 10:48:58 INFO STEP 0 ~ URL IN USE :- https://staging.electrical.coop.co.uk
+03-07-2017 10:48:58 INFO STEP 0 ~ DEVICE IN USE:- Mac OS X-10.12.5
+03-07-2017 10:48:59 INFO STEP 1 ~ Asserting page title equals 'Co-op Electrical: Buy Electrical Appliances at Lowest Prices'
+03-07-2017 10:48:59 INFO STEP 2 ~ Taking screenshot
+03-07-2017 10:48:59 INFO STEP 3 ~ Inputting text 'WM7120W' in element 'Search Box'
+03-07-2017 10:48:59 INFO STEP 4 ~ Clicking element 'Search Button'
+03-07-2017 10:49:03 INFO STEP 5 ~ Taking screenshot
+03-07-2017 10:49:03 INFO STEP 6 ~ Clicking element 'Add to Basket Button'
+03-07-2017 10:49:03 INFO STEP 7 ~ Clicking element 'Checkout Button'
+03-07-2017 10:49:05 INFO STEP 8 ~ Taking screenshot
+03-07-2017 10:49:05 INFO STEP 9 ~ Asserting page title equals 'Your Basket'
+03-07-2017 10:49:05 INFO STEP 10 ~ Clicking element 'Continue to Checkout Button'
+03-07-2017 10:49:08 INFO STEP 11 ~ Taking screenshot
+03-07-2017 10:49:08 INFO STEP 12 ~ Asserting page title equals 'Checkout Page'
+03-07-2017 10:49:08 INFO STEP 13 ~ Inputting Postcode
+03-07-2017 10:49:13 INFO STEP 13 ~ Waiting 2 seconds
+03-07-2017 10:49:15 INFO STEP 14 ~ Clicking element 'PCA Address Text'
+03-07-2017 10:49:15 INFO STEP 15 ~ Validating selected address
+03-07-2017 10:49:15 INFO STEP 16 ~ Selecting option 'Mr' from element 'Title Drop Down'
+03-07-2017 10:49:15 INFO STEP 17 ~ Inputting text 'Test' in element 'First Name Input'
+03-07-2017 10:49:16 INFO STEP 18 ~ Inputting text 'Tester' in element 'Last Name Input'
+03-07-2017 10:49:16 INFO STEP 19 ~ Inputting text '07811111111' in element 'Contact Number Input'
+03-07-2017 10:49:16 INFO STEP 20 ~ Inputting text 'chrispotter@coopdigital.coop' in element 'Email Input'
+03-07-2017 10:49:16 INFO STEP 21 ~ Taking screenshot
+03-07-2017 10:49:17 INFO STEP 22 ~ Clicking element 'Confirm Delivery Details Button'
+03-07-2017 10:49:17 INFO STEP 23 ~ Selecting delivery date
+03-07-2017 10:49:17 INFO STEP 23 ~ Getting Text Value of Element: 'Last Visible Delivery Date Button'
+03-07-2017 10:49:18 INFO STEP 24 ~ Clicking element 'Delivery Date Scroll Right Button'
+03-07-2017 10:49:18 INFO STEP 25 ~ Getting Text Value of Element: 'Last Visible Delivery Date Button'
+03-07-2017 10:49:19 INFO STEP 26 ~ Getting Text Value of Element: 'Last Visible Delivery Date Button'
+03-07-2017 10:49:19 INFO STEP 27 ~ Clicking element 'Delivery Date Scroll Right Button'
+03-07-2017 10:49:19 INFO STEP 28 ~ Getting Text Value of Element: 'Last Visible Delivery Date Button'
+03-07-2017 10:49:19 INFO STEP 29 ~ Getting Text Value of Element: 'Last Visible Delivery Date Button'
+03-07-2017 10:49:20 INFO STEP 31 ~ Taking screenshot
+03-07-2017 10:49:20 INFO STEP 32 ~ Clicking element 'Confirm Delivery Date Button'
+03-07-2017 10:49:20 INFO STEP 33 ~ Clicking element Terms and Conditions Checkbox
+03-07-2017 10:49:20 INFO STEP 34 ~ Taking screenshot
+03-07-2017 10:49:21 INFO STEP 35 ~ Clicking element 'Pay for Items Button'
+03-07-2017 10:49:21 INFO STEP 36 ~ Clicking element 'Membership - No Proceed To Payment Button'
+03-07-2017 10:49:22 INFO STEP 37 ~ Inputting text 'Test' in element 'Name on Card Input'
+03-07-2017 10:49:22 INFO STEP 38 ~ Inputting text '511111111111111 8' in element 'Card Number Input'
+03-07-2017 10:49:23 INFO STEP 39 ~ Inputting text '202' in element 'Card CCV Number Input'
+03-07-2017 10:49:23 INFO STEP 40 ~ Selecting option '5' from element 'Card Expiry Month Drop Down'
+03-07-2017 10:49:24 INFO STEP 41 ~ Selecting option '2021' from element 'Card Expiry Year Drop Down'
+03-07-2017 10:49:24 INFO STEP 42 ~ Clicking element 'Pay and Complete Button'
+03-07-2017 10:49:24 INFO STEP 43 ~ Taking screenshot
+03-07-2017 10:49:31 INFO STEP 44 ~ Waiting 10 seconds
+03-07-2017 10:49:41 INFO END OF TEST

@@ -1,0 +1,33 @@
+30-06-2017 10:40:21 INFO START OF TEST
+30-06-2017 10:40:28 INFO STEP 0 ~ BROWSER IN USE :- chrome
+30-06-2017 10:40:28 INFO STEP 0 ~ BROWSER VERSION :- 56.0.2924.87
+30-06-2017 10:40:28 INFO STEP 0 ~ URL IN USE :- https://staging.electrical.coop.co.uk
+30-06-2017 10:40:28 INFO STEP 0 ~ DEVICE IN USE:- Mac OS X-10.12.5
+30-06-2017 10:40:28 INFO STEP 1 ~ Asserting page title equals 'Co-op Electrical: Buy Electrical Appliances at Lowest Prices'
+30-06-2017 10:40:28 INFO STEP 2 ~ Taking screenshot
+30-06-2017 10:40:29 INFO STEP 3 ~ Inputting text 'WM7120W' in element 'Search Box'
+30-06-2017 10:40:29 INFO STEP 4 ~ Clicking element 'Search Button'
+30-06-2017 10:40:33 INFO STEP 5 ~ Taking screenshot
+30-06-2017 10:40:34 INFO STEP 6 ~ Clicking element 'Add to Basket Button'
+30-06-2017 10:40:34 INFO STEP 7 ~ Waiting 2 seconds
+30-06-2017 10:40:36 INFO STEP 7 ~ Clicking element 'Checkout Button'
+30-06-2017 10:40:38 INFO STEP 8 ~ Taking screenshot
+30-06-2017 10:40:38 INFO STEP 9 ~ Asserting page title equals 'Your Basket'
+30-06-2017 10:40:38 INFO STEP 10 ~ Clicking element 'Continue to Checkout Button'
+30-06-2017 10:40:40 INFO STEP 11 ~ Taking screenshot
+30-06-2017 10:40:40 INFO STEP 12 ~ Asserting page title equals 'Checkout Page'
+30-06-2017 10:40:40 INFO STEP 13 ~ Inputting Postcode
+30-06-2017 10:40:45 INFO STEP 13 ~ Waiting 2 seconds
+30-06-2017 10:40:47 INFO STEP 14 ~ Clicking element 'PCA Address Text'
+30-06-2017 10:40:47 INFO STEP 15 ~ Validating selected address
+30-06-2017 10:40:47 INFO STEP 16 ~ Selecting option 'Mr' from element 'Title Drop Down'
+30-06-2017 10:40:48 INFO STEP 17 ~ Inputting text 'Test' in element 'First Name Input'
+30-06-2017 10:40:48 INFO STEP 18 ~ Inputting text 'Tester' in element 'Last Name Input'
+30-06-2017 10:40:48 INFO STEP 19 ~ Inputting text '07811111111' in element 'Contact Number Input'
+30-06-2017 10:40:48 INFO STEP 20 ~ Inputting text 'chrispotter@coopdigital.coop' in element 'Email Input'
+30-06-2017 10:40:49 INFO STEP 21 ~ Taking screenshot
+30-06-2017 10:40:49 INFO STEP 22 ~ Clicking element 'Confirm Delivery Details Button'
+30-06-2017 10:40:49 INFO STEP 23 ~ Selecting delivery date
+30-06-2017 10:40:49 WARNING Delivery date selected is before first available
+30-06-2017 10:40:50 SEVERE Test Completed With Fail
+30-06-2017 10:40:50 INFO END OF TEST
