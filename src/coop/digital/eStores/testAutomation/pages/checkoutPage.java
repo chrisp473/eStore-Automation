@@ -58,7 +58,7 @@ public class checkoutPage extends eStoresPage{
 	public static final ElementProperties  payForItems_Button = new ElementProperties(By.id("payforitems"), "Pay for Items Button", ElementTypes.BUTTON,Constants.BLANK_VALUE);
 	
 	//Membership Details
-	public static final ElementProperties  noProceedToPayment_Button = new ElementProperties(By.xpath("//a[@role='button' and contains(text(),'No, proceed to payment')]"), "Membership - No Proceed To Payment Button", ElementTypes.BUTTON,Constants.BLANK_VALUE);
+	public static final ElementProperties  noProceedToPayment_Button = new ElementProperties(By.xpath("//div[@id='checkout-step-4' and @aria-expanded='true']//a[@role='button' and contains(text(),'No, proceed to payment')]"), "Membership - No Proceed To Payment Button", ElementTypes.BUTTON,Constants.BLANK_VALUE);
 	public static final ElementProperties  yesEnterDetails_Button = new ElementProperties(By.xpath("//a[@role='button' and contains(text(),'Yes, enter details')]"), "Membership - Yes Enter Details Button", ElementTypes.BUTTON,Constants.BLANK_VALUE);
 	
 	//Pay for your Items
@@ -128,7 +128,7 @@ public class checkoutPage extends eStoresPage{
 			addressString+="\n"+postCode;
 			WebElement addressText = getWebElement(selectedAddress_Text);
 			
-			assertThat(addressString.trim(), equalTo(addressText.getText().trim()));
+			assertThat(addressText.getText().trim(),equalTo(addressString.trim()));
 			TestHelper.incrementStepCount();
 		}
 		catch(AssertionError|Exception e){
@@ -160,10 +160,12 @@ public class checkoutPage extends eStoresPage{
 			}
 			// else search for date including scrolling right
 			else{
+				String lastVisibleDate="";
+				String lastVisibleDateAfter="";
+//				while (deliveryDateScrollNext_Button.getWebElement().isEnabled()){
+				do{
 				
-				while (deliveryDateScrollNext_Button.getWebElement().isEnabled()){
-				
-					String lastVisibleDate = lastDeliveryDateInDisplay_Button.getElementText().trim().substring(0,5)+"/"+c.get(Calendar.YEAR);
+					lastVisibleDate = lastDeliveryDateInDisplay_Button.getElementText().trim().substring(0,5)+"/"+c.get(Calendar.YEAR);
 					
 					Date lastVisibleDateD = df.parse(lastVisibleDate);
 					
@@ -183,13 +185,18 @@ public class checkoutPage extends eStoresPage{
 					
 					if(dateFound) break;
 					
-				}
+					lastVisibleDateAfter = lastDeliveryDateInDisplay_Button.getElementText().trim().substring(0,5)+"/"+c.get(Calendar.YEAR);
+					
+				}while(!lastVisibleDate.equals(lastVisibleDateAfter));
 			}
 			
 			
-			assertThat(dateFound,equalTo(true));
+//			assertThat(dateFound,equalTo(true));
+			if (!dateFound){
+				throw new Exception("Delivery date "+deliveryDate+" not found");
+			}
 			TestHelper.incrementStepCount();
-			waitSeconds(1);
+//			waitSeconds(1);
 		}
 		catch(AssertionError|Exception e){
 			TestHelper.handleExceptionNoRetry(e.getMessage());
@@ -206,7 +213,7 @@ public class checkoutPage extends eStoresPage{
 			WebElement ele = getWebElement(termsAndConditions_Checkbox.getIframeXpath(), termsAndConditions_Checkbox.getLocator(), true, true);
 			int width = ele.getSize().getWidth();
 			Actions action = new Actions(BrowserHelper.getDriver());
-			action.moveByOffset(width/10, 0).click(ele).build().perform();				
+			action.moveByOffset(width/10000, 0).click(ele).build().perform();				
 
 			TestHelper.incrementStepCount();
 		}

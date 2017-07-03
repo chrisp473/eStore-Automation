@@ -1,6 +1,9 @@
 package coop.digital.eStores.testAutomation.utilityAndFactories;
 
 
+import static coop.digital.eStores.testAutomation.constants.Constants.OBJECT_SYNC_DEFAULT_TIMEOUT;
+import static coop.digital.eStores.testAutomation.constants.Constants.PAGE_SYNC_DEFAULT_TIMEOUT;
+
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -8,6 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -20,9 +24,6 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
 import coop.digital.eStores.testAutomation.helpers.TestHelper;
-
-import static coop.digital.eStores.testAutomation.constants.Constants.OBJECT_SYNC_DEFAULT_TIMEOUT;
-import static coop.digital.eStores.testAutomation.constants.Constants.PAGE_SYNC_DEFAULT_TIMEOUT;
 
 public class WebDriverFactory {
 
@@ -98,6 +99,7 @@ public class WebDriverFactory {
 		}
 		
         driver.manage().deleteAllCookies();
+        driver.manage().window().setSize(new Dimension(2400,900));
         driver.manage().window().maximize();
         driver.manage().timeouts().pageLoadTimeout(PAGE_SYNC_DEFAULT_TIMEOUT, TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(OBJECT_SYNC_DEFAULT_TIMEOUT, TimeUnit.SECONDS);
@@ -256,7 +258,8 @@ public class WebDriverFactory {
         
         ChromeOptions options = new ChromeOptions();
         options.setExperimentalOption("prefs", prefs);  
-        options.addArguments("--kiosk");
+//        options.addArguments("--kiosk");
+        options.addArguments("--start-maximized");
         
         DesiredCapabilities capabilities = DesiredCapabilities.chrome();
         capabilities.setCapability(ChromeOptions.CAPABILITY, options);   	

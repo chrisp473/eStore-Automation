@@ -1,1 +1,6 @@
 # eStores-Test-Automation .gitignore
+
+Results
+test-output
+InitialSetup-eStores.xml
+RemoteSystemsTempFiles

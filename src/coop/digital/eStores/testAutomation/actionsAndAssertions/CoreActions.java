@@ -51,6 +51,7 @@ public class CoreActions {
 				
 				WebElement ele = getWebElement(framePath, locator, true, true);
 				((JavascriptExecutor)BrowserHelper.getDriver()).executeScript("arguments[0].scrollIntoView(true);", ele);
+
 				ele.click();
 
 				TestHelper.incrementStepCount();

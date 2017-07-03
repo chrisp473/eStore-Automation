@@ -16,7 +16,7 @@ public class eStoresBaseTest {
 	
 	protected HashMap<String, String> testData;
 	protected static String testCaseName;
-	protected static String excelDataSheetName="Sheet1";
+	protected static String excelDataSheetName="TestCases";
 	protected static ExcelUtils testDataWorkbook;
 	protected static String filePath;
 	private static Properties properties;
