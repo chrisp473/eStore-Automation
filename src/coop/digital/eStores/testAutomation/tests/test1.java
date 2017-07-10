@@ -13,7 +13,7 @@ import coop.digital.eStores.testAutomation.superTest.eStoresBaseTest;
 
 public class test1 extends eStoresBaseTest{
 
-	@Test(invocationCount=1)
+	@Test(groups = { "smoke" }, invocationCount=1)
 	public void testSteps() throws Exception{
 		try{
 			landingPage.checkPageTitle();
@@ -48,7 +48,8 @@ public class test1 extends eStoresBaseTest{
 			eStoresPage.takeScreenshot();
 			checkoutPage.confirmDeliveryDate_Button.click();
 			
-			checkoutPage.clickTCsCheckbox();
+//			checkoutPage.clickTCsCheckbox();
+			checkoutPage.termsAndConditions_Checkbox.clickViaJavaScript();
 			eStoresPage.takeScreenshot();
 			checkoutPage.payForItems_Button.click();
 			

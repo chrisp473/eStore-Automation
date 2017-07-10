@@ -60,8 +60,10 @@ public class BrowserHelper {
 	public static String getBrowserVersion(){
 		String browserVersion = "NOT_SET";
 		if(driver!=null){
-//			browserVersion = ((RemoteWebDriver)(BrowserHelper.getWrappedDriver())).getCapabilities().getCapability("browserVersion").toString();
-			browserVersion = ((RemoteWebDriver)(BrowserHelper.getWrappedDriver())).getCapabilities().getVersion().toString();
+			if(System.getProperty("BrowserName").trim().equalsIgnoreCase("FIREFOX")){
+				browserVersion = ((RemoteWebDriver)(BrowserHelper.getWrappedDriver())).getCapabilities().getCapability("browserVersion").toString();
+			}
+			else browserVersion = ((RemoteWebDriver)(BrowserHelper.getWrappedDriver())).getCapabilities().getVersion().toString();
 		}
 		return browserVersion;
 	}

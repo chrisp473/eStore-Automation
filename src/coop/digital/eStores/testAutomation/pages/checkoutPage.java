@@ -50,8 +50,8 @@ public class checkoutPage extends eStoresPage{
 	public static final ElementProperties  lastDeliveryDateInDisplay_Button = new ElementProperties(By.xpath("(//li[@aria-hidden='false']//input[@id='availableDate'])[last()]//.."), "Last Visible Delivery Date Button", ElementTypes.BUTTON,Constants.BLANK_VALUE);
 	public static final ElementProperties  deliveryDateInDisplay_Button = new ElementProperties(By.xpath("//li[@aria-hidden='false']//input[@id='availableDate']//.."), "Visible Delivery Date Button", ElementTypes.BUTTON,Constants.BLANK_VALUE);
 	public static final ElementProperties  deliveryDateOutOfDisplay_Button = new ElementProperties(By.xpath("//li[@aria-hidden='true']//input[@id='availableDate']//.."), "Delivery Date Button out of display", ElementTypes.BUTTON,Constants.BLANK_VALUE);
-	public static final ElementProperties  deliveryDateScrollNext_Button = new ElementProperties(By.xpath("//button[@aria-label='Next']"), "Delivery Date Scroll Right Button", ElementTypes.BUTTON,Constants.BLANK_VALUE);
-	public static final ElementProperties  confirmDeliveryDate_Button = new ElementProperties(By.id("reviewtcbutton"), "Confirm Delivery Date Button", ElementTypes.BUTTON,Constants.BLANK_VALUE);
+	public static final ElementProperties  deliveryDateScrollNext_Button = new ElementProperties(By.xpath("//div[@id='checkout-step-2' and @aria-expanded='true']//button[@aria-label='Next']"), "Delivery Date Scroll Right Button", ElementTypes.BUTTON,Constants.BLANK_VALUE);
+	public static final ElementProperties  confirmDeliveryDate_Button = new ElementProperties(By.xpath("//button[@id='reviewtcbutton' and @ng-href='#checkout-step-3']"), "Confirm Delivery Date Button", ElementTypes.BUTTON,Constants.BLANK_VALUE);
 	
 	//Terms and Conditions
 	public static final ElementProperties  termsAndConditions_Checkbox = new ElementProperties(By.xpath("//input[@id='terms']//..//label"), "Terms and Conditions Checkbox", ElementTypes.CHECKBOX,Constants.BLANK_VALUE);
@@ -95,7 +95,7 @@ public class checkoutPage extends eStoresPage{
 //				inputString += postCodeInput[i];
 //				getWebElement(postCode_Input).sendKeys(inputString);
 				postCodeInputBox.sendKeys(postCodeInput[i]);
-				Thread.sleep(250);
+				Thread.sleep(500);
 			}
 			waitSeconds(2);
 			TestHelper.incrementStepCount();

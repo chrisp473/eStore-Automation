@@ -1,5 +1,7 @@
 package coop.digital.eStores.testAutomation.constants;
 
+import java.io.File;
+
 public class Constants {
 
 	public static final int PAGE_SYNC_DEFAULT_TIMEOUT = 60;
@@ -10,17 +12,17 @@ public class Constants {
 	
 	public static final int PAGE_URL_WAIT_TIMEOUT = 10;
 	
-	public static final String XML_LOG_FILE_LOCATION = "/log.xml";
+	public static final String XML_LOG_FILE_LOCATION = File.separator+"log.xml";
 
-	public static final String XML_lOG_TEMPLATE_LOCATION = "/ProjectResources/Templates/log.xml";
+	public static final String XML_lOG_TEMPLATE_LOCATION = File.separator+"ProjectResources"+File.separator+"Templates"+File.separator+"log.xml";
 	
-	public static final String XML_TESTDATA_TEMPLATE_LOCATION = "/ProjectResources/Templates/TestData.xml";
+	public static final String XML_TESTDATA_TEMPLATE_LOCATION = File.separator+"ProjectResources"+File.separator+"Templates"+File.separator+"TestData.xml";
 	
 	public static final String INITIAL_SET_UP_FILE_PREFIX = "InitialSetup-";
 	
-	public static final String TESTRESULTS_LOCATION  = "/Results/TestResults.xml";
+	public static final String TESTRESULTS_LOCATION  = File.separator+"Results"+File.separator+"TestResults.xml";
 	
-	public static final String TESTRESULT_TEMPLATE_LOCATION = "/ProjectResources/Templates/TestResults.xml";
+	public static final String TESTRESULT_TEMPLATE_LOCATION = File.separator+"ProjectResources"+File.separator+"Templates"+File.separator+"TestResults.xml";
 
 	public static final String BLANK_VALUE = "";
 	

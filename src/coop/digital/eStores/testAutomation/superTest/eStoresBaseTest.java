@@ -1,5 +1,6 @@
 package coop.digital.eStores.testAutomation.superTest;
 
+import java.io.File;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Properties;
@@ -21,7 +22,7 @@ public class eStoresBaseTest {
 	protected static String filePath;
 	private static Properties properties;
 	
-	@BeforeMethod
+	@BeforeMethod(alwaysRun=true)
 	public void setup() throws Exception {
 		TestHelper.isTestLaunchSuccess = false;
 		TestHelper.clearSystemProperty("resultsFolder");	
@@ -70,7 +71,7 @@ public class eStoresBaseTest {
 		TestHelper.setTestResult("PASS");//set to pass when set up complete
 	}
 	
-	@AfterMethod
+	@AfterMethod(alwaysRun=true)
 	public void teardown() throws Exception {
 			TestHelper.teardownTest();
 
@@ -114,11 +115,11 @@ public class eStoresBaseTest {
 
 	protected static void setTestDataFilePath() throws Exception {
 		if (System.getProperty("TestDataSheetName")== null ){
-		filePath = String.format("%s/Resources/TestData/%s%s.xlsx",
+		filePath = String.format("%s"+File.separator+"Resources"+File.separator+"TestData"+File.separator+"%s%s.xlsx",
 				System.getProperty("rootDirectory"),
 				System.getProperty("Environment_To_Use"), "_eStoresTestData");
 		} else {
-			filePath = String.format("%s/Resources/TestData/%s",
+			filePath = String.format("%s"+File.separator+"Resources"+File.separator+"TestData"+File.separator+"%s",
 					System.getProperty("rootDirectory"),
 					System.getProperty("TestDataSheetName"));
 		}

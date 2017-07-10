@@ -1,5 +1,6 @@
 package coop.digital.eStores.testAutomation.utilityAndFactories;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.FileHandler;
@@ -67,7 +68,7 @@ public class TestLogger {
 	public static void initialiseHandler() throws Exception
 	{
 		String logFilePath = TestHelper.getTestCaseResultsDirectory();
-		logFilePath += "/log.txt";
+		logFilePath += File.separator+"log.txt";
 		
 		TestLogFormatter formatter = new TestLogFormatter();
 		
@@ -86,7 +87,7 @@ public class TestLogger {
 		
 		if(enableHTMLLog){
 		htmlLogger = new XMLTestLogger();
-		htmlLogger.setResultFilePath(TestHelper.getTestCaseResultsDirectory() + "/log.xml");
+		htmlLogger.setResultFilePath(TestHelper.getTestCaseResultsDirectory() + File.separator+"log.xml");
 		htmlLogger.createLogTemplate();
 		}
 		//--------------- Create HTMLLogger object

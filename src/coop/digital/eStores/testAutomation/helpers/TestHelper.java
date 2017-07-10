@@ -350,9 +350,9 @@ public class TestHelper {
 		
 		public static void createTestDirectories()
 		{
-			driverDirectory =  System.getProperty("rootDirectory")+ "/ProjectResources/drivers";
-			externalScriptsDirectory = System.getProperty("rootDirectory")  + "/ProjectResources/external scripts";
-			testResultsDirectory = System.getProperty("rootDirectory") + "/Results";
+			driverDirectory =  System.getProperty("rootDirectory")+ File.separator+"ProjectResources"+File.separator+"drivers";
+			externalScriptsDirectory = System.getProperty("rootDirectory")  +File.separator+ "ProjectResources"+File.separator+"external scripts";
+			testResultsDirectory = System.getProperty("rootDirectory") + File.separator+"Results";
 			testCaseResultsDirectory = getTestCaseResultsDirectory(testResultsDirectory);
 			
 			if (!new File(testResultsDirectory).exists())
@@ -570,11 +570,11 @@ public class TestHelper {
 					if(nl.getLength()>0 && isOverridePermitted){
 						//if node exists overwrite with new details. 
 						
-						NodeList resultFolder = XMLUtil.GetNodesThatMatchXPath(xpathstr + "/ResultFolder", doc);
+						NodeList resultFolder = XMLUtil.GetNodesThatMatchXPath(xpathstr + File.separator+"ResultFolder", doc);
 						resultFolder.item(0).setTextContent(resultFolderName);
 						
-						NodeList resultFile =XMLUtil.GetNodesThatMatchXPath(xpathstr + "/ResultFile", doc);
-						resultFile.item(0).setTextContent(resultFolderName + "//log.xml");
+						NodeList resultFile =XMLUtil.GetNodesThatMatchXPath(xpathstr + File.separator+"ResultFile", doc);
+						resultFile.item(0).setTextContent(resultFolderName + File.separator+"log.xml");
 						
 						NodeList status = XMLUtil.GetNodesThatMatchXPath(xpathstr + "/Status", doc);
 						status.item(0).setTextContent(testStatus);
@@ -612,7 +612,7 @@ public class TestHelper {
 						nodeEle.appendChild(resulFolder);
 						
 						Element resulFile = doc.createElement("ResultFile");
-						resulFile.setTextContent(resultFolderName + "/log.xml");
+						resulFile.setTextContent(resultFolderName + File.separator+"log.xml");
 						nodeEle.appendChild(resulFile);
 						
 						Element status = doc.createElement("Status");
@@ -679,7 +679,7 @@ public class TestHelper {
 				
 				try{
 					//-------- Create a copy of the TestData file
-					FileUtils.copyFile(new File(System.getProperty("rootDirectory")+Constants.XML_TESTDATA_TEMPLATE_LOCATION), new File(String.format("%s/TestData.xml", testCaseResultsDirectory)));
+					FileUtils.copyFile(new File(System.getProperty("rootDirectory")+Constants.XML_TESTDATA_TEMPLATE_LOCATION), new File(String.format("%s"+File.separator+"TestData.xml", testCaseResultsDirectory)));
 					
 					//get reference to document and parse it as XML document
 					Document doc = XMLUtil.getXMLDoc(System.getProperty("rootDirectory")+Constants.XML_TESTDATA_TEMPLATE_LOCATION);
@@ -692,7 +692,7 @@ public class TestHelper {
 						nodeEle.setAttribute("value", arrColValues[i]);
 						testResultNode.appendChild(nodeEle);
 					}
-					XMLUtil.UpdateXMLFile(doc, String.format("%s/TestData.xml", testCaseResultsDirectory));
+					XMLUtil.UpdateXMLFile(doc, String.format("%s"+File.separator+"TestData.xml", testCaseResultsDirectory));
 				}catch(Exception e){
 					System.out.println("An Exception was generated while writing test data to TestData.xml " + e.getMessage());
 				}

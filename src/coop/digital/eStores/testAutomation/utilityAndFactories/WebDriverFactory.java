@@ -4,6 +4,7 @@ package coop.digital.eStores.testAutomation.utilityAndFactories;
 import static coop.digital.eStores.testAutomation.constants.Constants.OBJECT_SYNC_DEFAULT_TIMEOUT;
 import static coop.digital.eStores.testAutomation.constants.Constants.PAGE_SYNC_DEFAULT_TIMEOUT;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -19,9 +20,11 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.firefox.internal.ProfilesIni;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
+import org.openqa.selenium.safari.SafariOptions;
 
 import coop.digital.eStores.testAutomation.helpers.TestHelper;
 
@@ -243,7 +246,11 @@ public class WebDriverFactory {
 	
     private static WebDriver initialiseLocalChromeDriver()
     {
-    	String driverLocation = TestHelper.getDriverDirectory() + "/chromedriver";
+    	String driverLocation = "";
+    	if(System.getProperty("os.name").toLowerCase().contains("mac")){
+    		driverLocation = TestHelper.getDriverDirectory() + File.separator+"chromedriver";
+    	}
+    	else driverLocation = TestHelper.getDriverDirectory() + File.separator+"chromedriver.exe";
         System.setProperty("webdriver.chrome.driver", driverLocation);
         
         return new ChromeDriver(setChromeCapability());
@@ -254,7 +261,7 @@ public class WebDriverFactory {
     	
     	Map<String, Object> prefs = new HashMap<String, Object>();
         prefs.put("profile.default_content_settings.popups", 0);
-        prefs.put("download.default_directory", TestHelper.getSystemProperty("rootDirectory")+"/Results/"+TestHelper.getSystemProperty("resultsFolder")+"/");
+        prefs.put("download.default_directory", TestHelper.getSystemProperty("rootDirectory")+File.separator+"Results"+File.separator+TestHelper.getSystemProperty("resultsFolder")+"/");
         
         ChromeOptions options = new ChromeOptions();
         options.setExperimentalOption("prefs", prefs);  
@@ -267,9 +274,23 @@ public class WebDriverFactory {
         return capabilities;    	
     }
     
-    private static WebDriver initialiseLocalSafariDriver()
+    private static WebDriver initialiseLocalSafariDriver() throws MalformedURLException
     {    		
-    	return new SafariDriver();    	
+//    	return new SafariDriver();   
+//    	DesiredCapabilities capabilities = DesiredCapabilities.safari();
+//    	capabilities.setCapability(SafariOptions.CAPABILITY, new SafariOptions());
+//    	WebDriver driver = new RemoteWebDriver(capabilities);
+//    	return driver;
+    	SafariOptions options = new SafariOptions();
+//    	options.setUseCleanSession(true);
+//    	WebDriver driver = new SafariDriver(options);
+//    	return driver;
+    	 DesiredCapabilities capabilities = DesiredCapabilities.safari();
+    	 capabilities.setCapability(SafariOptions.CAPABILITY, options);
+    	 RemoteWebDriver driver = new RemoteWebDriver(
+    	     new URL("http://localhost:3333"), capabilities);
+    	 return driver;
+
     }
 
     private static WebDriver initialiseRemoteSafariDriver() throws MalformedURLException
@@ -280,16 +301,20 @@ public class WebDriverFactory {
     
     private static WebDriver initialiseLocalFirefoxDriver()
     {   
-    	if(!System.getProperty("os.name").equalsIgnoreCase("Windows XP")){
-    		System.setProperty("webdriver.gecko.driver", TestHelper.getDriverDirectory() + "/geckodriver");
+    	String driverLocation = "";
+    	if(System.getProperty("os.name").toLowerCase().contains("mac")){
+    		driverLocation = TestHelper.getDriverDirectory() + File.separator+"geckodriver";
     	}
+    	else driverLocation = TestHelper.getDriverDirectory() + File.separator+"geckodriver.exe";
+    		System.setProperty("webdriver.gecko.driver", driverLocation);
+    	
     	
     	return new FirefoxDriver(SetFireFoxCapabilities());    	
     }
 
     private static WebDriver initialiseLocalIEDriver() throws IOException
     {
-    	String driverLocation = TestHelper.getDriverDirectory() + "\\IEDriverServer.exe";
+    	String driverLocation = TestHelper.getDriverDirectory() + File.separator+"IEDriverServer.exe";
     	System.setProperty("webdriver.ie.driver", driverLocation);
     	
     	TestHelper.executeCmdFile("ClearIEHistory");
@@ -299,7 +324,7 @@ public class WebDriverFactory {
 
     private static WebDriver initialiseRemoteChromeDriver() throws MalformedURLException
     {
-    	String driverLocation = TestHelper.getDriverDirectory() + "\\chromedriver.exe";
+    	String driverLocation = TestHelper.getDriverDirectory() + File.separator+"chromedriver.exe";
         System.setProperty("webdriver.chrome.driver", driverLocation);
     	
         ChromeOptions options = new ChromeOptions();
@@ -317,7 +342,7 @@ public class WebDriverFactory {
 
     private static WebDriver initialiseRemoteIEDriver() throws IOException
     {
-    	String driverLocation = TestHelper.getDriverDirectory() + "\\IEDriverServer.exe";
+    	String driverLocation = TestHelper.getDriverDirectory() + File.separator+"IEDriverServer.exe";
     	System.setProperty("webdriver.ie.driver", driverLocation);
     	
     	TestHelper.executeCmdFile("ClearIEHistory");
@@ -333,7 +358,7 @@ public class WebDriverFactory {
     	String fireFoxProfile = System.getProperty("FireFoxProfile");
     	    	
     	if (browserVersionPath != null && !browserVersionPath.equals("") ) {
-    		capabilities.setCapability("firefox_binary",browserVersionPath + "\\firefox.exe" );
+    		capabilities.setCapability("firefox_binary",browserVersionPath + File.separator+"firefox.exe" );
     	}
     	// Sets the desired FF profile
     	if(fireFoxProfile!=null && !fireFoxProfile.equals("")){
@@ -346,7 +371,7 @@ public class WebDriverFactory {
         		fp.setPreference("browser.download.manager.showWhenStarting",false);
         		fp.setPreference("browser.helperApps.neverAsk.saveToDisk","text/html, application/xhtml+xml, application/xml, application/csv, text/plain, application/vnd.ms-excel, text/csv, text/comma-separated-values, application/pdf");
         		fp.setPreference("browser.download.folderList",2);
-        		fp.setPreference("browser.download.dir", TestHelper.getSystemProperty("rootDirectory")+"/Results/"+TestHelper.getSystemProperty("resultsFolder")+"/");
+        		fp.setPreference("browser.download.dir", TestHelper.getSystemProperty("rootDirectory")+File.separator+"Results"+TestHelper.getSystemProperty("resultsFolder")+File.separator);
         	}//End ----- This is Temporary fix
     		
 	    	capabilities.setCapability(FirefoxDriver.PROFILE, fp);    		
@@ -367,7 +392,7 @@ public class WebDriverFactory {
         		fp.setPreference("browser.download.manager.showWhenStarting",false);
         		fp.setPreference("browser.helperApps.neverAsk.saveToDisk","text/html, application/xhtml+xml, application/xml, application/csv, text/plain, application/vnd.ms-excel, text/csv, text/comma-separated-values, application/pdf");
         		fp.setPreference("browser.download.folderList",2);
-        		fp.setPreference("browser.download.dir", TestHelper.getSystemProperty("rootDirectory")+"/Results/"+TestHelper.getSystemProperty("resultsFolder")+"/");
+        		fp.setPreference("browser.download.dir", TestHelper.getSystemProperty("rootDirectory")+File.separator+"Results"+File.separator+TestHelper.getSystemProperty("resultsFolder")+File.separator);
         	}
        	
         	capabilities.setCapability(FirefoxDriver.PROFILE, fp);    
