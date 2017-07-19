@@ -18,8 +18,11 @@ import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import coop.digital.eStores.testAutomation.constants.Constants;
 import coop.digital.eStores.testAutomation.helpers.BrowserHelper;
 import coop.digital.eStores.testAutomation.helpers.ElementProperties;
 import coop.digital.eStores.testAutomation.helpers.TestHelper;
@@ -36,7 +39,7 @@ public class CoreActions {
 	public static void click(String elementName, String framePath, By locator) throws Exception
 	{
 		retryCount = 0;
-		maxRetryCount = 3;
+		maxRetryCount = 2;
 		
 		while (retryCount <= maxRetryCount)
 		{
@@ -50,8 +53,11 @@ public class CoreActions {
 				
 				
 				WebElement ele = getWebElement(framePath, locator, true, true);
+		
 				((JavascriptExecutor)BrowserHelper.getDriver()).executeScript("arguments[0].scrollIntoView(true);", ele);
-
+				WebDriverWait wait = new WebDriverWait(BrowserHelper.getDriver(), Constants.OBJECT_SYNC_DEFAULT_TIMEOUT);
+				wait.until(ExpectedConditions.elementToBeClickable(ele));
+				
 				ele.click();
 
 				TestHelper.incrementStepCount();
@@ -831,6 +837,7 @@ public class CoreActions {
 		
 		return BrowserHelper.getElement(locator);
 	}
+	
 
 	private static List<WebElement> getWebElements(String framePath, By locator, int timeoutSeconds) throws Exception
 	{
@@ -886,10 +893,12 @@ public class CoreActions {
 		}
 		
 		String fileName = String.format("%s_%s_%s.png", type, "STEP" + TestHelper.getStepCount(), TestHelper.getDateAsString(Calendar.getInstance().getTime(), "ddMMyyyy-HHmmss"));
-		String filePath = "%s/%s";
+		String filePath = "%s"+File.separator+"%s";
 		filePath = String.format(filePath, TestHelper.getTestCaseResultsDirectory(), fileName);
 		
 		FileUtils.copyFile(BrowserHelper.takeScreenShot(), new File(filePath));
+//		BrowserHelper.takeScreenShotAShot(filePath);
+
 		TestLogger.logScreenShotInHTMLReport(fileName);
 	}
 	

@@ -1,6 +1,7 @@
 package coop.digital.eStores.testAutomation.utilityAndFactories;
 
 import java.io.File;
+import java.io.FileOutputStream;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -33,12 +34,14 @@ public class XMLUtil {
 		@SuppressWarnings("deprecation")
 		public static void UpdateXMLFile(Document doc, String DocumentPath) throws Exception{
 			//-------- Write to XMl fILE
-			XMLSerializer serializer = new XMLSerializer();
-			serializer.setOutputCharStream(new java.io.FileWriter(DocumentPath));
+			FileOutputStream fileOut = new FileOutputStream(new File(DocumentPath));
 			OutputFormat format = new OutputFormat();
 			format.setStandalone(true);
-			serializer.setOutputFormat(format);
+			XMLSerializer serializer = new XMLSerializer(fileOut,format);
+//			serializer.setOutputCharStream(new java.io.FileWriter(DocumentPath));
+//			serializer.setOutputFormat(format);
 			serializer.serialize(doc);
+			fileOut.close();
 		}
 		public static NodeList GetNodesThatMatchXPath (String Xpath, Document doc) throws XPathExpressionException {
 			//locate existing node for this test if it exists 

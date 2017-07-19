@@ -5,17 +5,23 @@ import static coop.digital.eStores.testAutomation.constants.Constants.PAGE_SYNC_
 import static org.junit.Assert.fail;
 
 import java.awt.AWTException;
+import java.awt.Rectangle;
+import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
+
+import javax.imageio.ImageIO;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.OutputType;
-import org.openqa.selenium.ScreenOrientation;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -27,10 +33,12 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.google.common.base.Function;
-import com.google.common.base.Predicate;
 
-import coop.digital.eStores.testAutomation.helpers.TestHelper;
 import coop.digital.eStores.testAutomation.utilityAndFactories.WebDriverFactory;
+import ru.yandex.qatools.ashot.AShot;
+import ru.yandex.qatools.ashot.Screenshot;
+import ru.yandex.qatools.ashot.coordinates.WebDriverCoordsProvider;
+import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
 
 public class BrowserHelper {
 
@@ -264,9 +272,29 @@ public class BrowserHelper {
 		return driver.getWindowHandle();
 	}
 
-	public static File takeScreenShot()
+	public static File takeScreenShot() throws AWTException
 	{
+		Screenshot scre = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000)).takeScreenshot(driver);
 		return ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+	}
+	
+	public static void takeScreenShotRobot(String filePath) throws AWTException, IOException
+	{
+		Rectangle captureSize = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
+		Robot robot = new Robot();
+		BufferedImage bufferedImage = robot.createScreenCapture(captureSize);
+		ImageIO.write(bufferedImage, "png", new File(filePath));
+	}
+	
+	public static void takeScreenShotAShot(String filePath) throws AWTException, IOException
+	{
+		//using ashot jar to take full page screenshots - not got to work yet
+		
+//		Screenshot screenshot = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(2000)).takeScreenshot(driver);
+		Screenshot screenshot = new AShot().coordsProvider(new WebDriverCoordsProvider()) .takeScreenshot(driver);
+		ImageIO.write(screenshot.getImage(),"PNG",new File(filePath));
+		new WebDriverCoordsProvider();
+
 	}
 
 	public static void waitForElement(final By locator, int timeoutSeconds)
@@ -322,6 +350,7 @@ public class BrowserHelper {
 			}
 		});
 	}
+	
 	
 	public static void waitForElementToBeDisplayedAndEnabled(final WebElement element, int timeoutSeconds)
 	{

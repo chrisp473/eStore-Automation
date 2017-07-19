@@ -9,6 +9,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
 import coop.digital.eStores.testAutomation.frameworkConfiguration.FrameworkConfiguration;
+import coop.digital.eStores.testAutomation.helpers.BrowserHelper;
 import coop.digital.eStores.testAutomation.helpers.TestHelper;
 import coop.digital.eStores.testAutomation.utilityAndFactories.ExcelUtils;
 
@@ -77,7 +78,7 @@ public class eStoresBaseTest {
 
 			// testDataWorkbook.saveWorkBook();
 //			testDataWorkbook.CloseExcel();
-		
+		BrowserHelper.killDriver();
 	}
 
 	protected static void setSystemProperties() {

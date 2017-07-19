@@ -5,6 +5,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -12,7 +13,6 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.Select;
 
 import coop.digital.eStores.testAutomation.actionsAndAssertions.CoreAssertions;
 import coop.digital.eStores.testAutomation.constants.Constants;
@@ -25,7 +25,7 @@ import coop.digital.eStores.testAutomation.utilityAndFactories.TestLogger;
 
 public class checkoutPage extends eStoresPage{
 	
-	private static List<String> visibleDeliveryDates;
+
 
 	//*** PAGE TITLE ***-----------------------------------------------
 	private static final String pageTitle = "Checkout Page";
@@ -46,19 +46,20 @@ public class checkoutPage extends eStoresPage{
 	public static final ElementProperties  confirmDeliveryDetails_Button = new ElementProperties(By.xpath("//button[@title='Confirm delivery details']"), "Confirm Delivery Details Button", ElementTypes.BUTTON, Constants.BLANK_VALUE);
 	
 	//Delivery Date
-	public static final ElementProperties  firstDeliveryDateInDisplay_Button = new ElementProperties(By.xpath("(//li[@aria-hidden='false']//input[@id='availableDate'])[1]//.."), "First Visible Delivery Date Button", ElementTypes.BUTTON,Constants.BLANK_VALUE);
-	public static final ElementProperties  lastDeliveryDateInDisplay_Button = new ElementProperties(By.xpath("(//li[@aria-hidden='false']//input[@id='availableDate'])[last()]//.."), "Last Visible Delivery Date Button", ElementTypes.BUTTON,Constants.BLANK_VALUE);
-	public static final ElementProperties  deliveryDateInDisplay_Button = new ElementProperties(By.xpath("//li[@aria-hidden='false']//input[@id='availableDate']//.."), "Visible Delivery Date Button", ElementTypes.BUTTON,Constants.BLANK_VALUE);
-	public static final ElementProperties  deliveryDateOutOfDisplay_Button = new ElementProperties(By.xpath("//li[@aria-hidden='true']//input[@id='availableDate']//.."), "Delivery Date Button out of display", ElementTypes.BUTTON,Constants.BLANK_VALUE);
+	public static final ElementProperties  firstDeliveryDateInDisplay_Button = new ElementProperties(By.xpath("(//div[@id='checkout-step-2' and @aria-expanded='true']//li[@aria-hidden='false']//input[@id='availableDate'])[1]//.."), "First Visible Delivery Date Button", ElementTypes.BUTTON,Constants.BLANK_VALUE);
+	public static final ElementProperties  lastDeliveryDateInDisplay_Button = new ElementProperties(By.xpath("(//div[@id='checkout-step-2' and @aria-expanded='true']//li[@aria-hidden='false']//input[@id='availableDate'])[last()]//.."), "Last Visible Delivery Date Button", ElementTypes.BUTTON,Constants.BLANK_VALUE);
+	public static final ElementProperties  deliveryDateInDisplay_Button = new ElementProperties(By.xpath("//div[@id='checkout-step-2' and @aria-expanded='true']//li[@aria-hidden='false']//input[@id='availableDate']//.."), "Visible Delivery Date Button", ElementTypes.BUTTON,Constants.BLANK_VALUE);
+	public static final ElementProperties  deliveryDateOutOfDisplay_Button = new ElementProperties(By.xpath("//div[@id='checkout-step-2' and @aria-expanded='true']//li[@aria-hidden='true']//input[@id='availableDate']//.."), "Delivery Date Button out of display", ElementTypes.BUTTON,Constants.BLANK_VALUE);
 	public static final ElementProperties  deliveryDateScrollNext_Button = new ElementProperties(By.xpath("//div[@id='checkout-step-2' and @aria-expanded='true']//button[@aria-label='Next']"), "Delivery Date Scroll Right Button", ElementTypes.BUTTON,Constants.BLANK_VALUE);
 	public static final ElementProperties  confirmDeliveryDate_Button = new ElementProperties(By.xpath("//button[@id='reviewtcbutton' and @ng-href='#checkout-step-3']"), "Confirm Delivery Date Button", ElementTypes.BUTTON,Constants.BLANK_VALUE);
+	public static final ElementProperties  disabledDeliveryDate_Button = new ElementProperties(By.xpath("//div[@id='checkout-step-2' and @aria-expanded='true']//li[@aria-hidden='false']//input[@id='availableDate' and @disabled='disabled']//.."), "Confirm Delivery Date Button", ElementTypes.BUTTON,Constants.BLANK_VALUE);
 	
 	//Terms and Conditions
 	public static final ElementProperties  termsAndConditions_Checkbox = new ElementProperties(By.xpath("//input[@id='terms']//..//label"), "Terms and Conditions Checkbox", ElementTypes.CHECKBOX,Constants.BLANK_VALUE);
 	public static final ElementProperties  payForItems_Button = new ElementProperties(By.id("payforitems"), "Pay for Items Button", ElementTypes.BUTTON,Constants.BLANK_VALUE);
 	
 	//Membership Details
-	public static final ElementProperties  noProceedToPayment_Button = new ElementProperties(By.xpath("//div[@id='checkout-step-4' and @aria-expanded='true']//a[@role='button' and contains(text(),'No, proceed to payment')]"), "Membership - No Proceed To Payment Button", ElementTypes.BUTTON,Constants.BLANK_VALUE);
+	public static final ElementProperties  noProceedToPayment_Button = new ElementProperties(By.xpath("//div[@id='checkout-step-4' and @aria-expanded='true']//div[@class='membershipStep membershipStep1']//a[@role='button' and contains(text(),'No, proceed to payment')]"), "Membership - No Proceed To Payment Button", ElementTypes.BUTTON,Constants.BLANK_VALUE);
 	public static final ElementProperties  yesEnterDetails_Button = new ElementProperties(By.xpath("//a[@role='button' and contains(text(),'Yes, enter details')]"), "Membership - Yes Enter Details Button", ElementTypes.BUTTON,Constants.BLANK_VALUE);
 	
 	//Pay for your Items
@@ -138,6 +139,7 @@ public class checkoutPage extends eStoresPage{
 	
 	public static void selectDeliveryDate(String deliveryDate) throws Exception{
 
+		//will select the specified date, or the next available date after date specified
 		try
 		{
 			boolean dateFound = false;
@@ -148,6 +150,9 @@ public class checkoutPage extends eStoresPage{
 			//set first expected date (tomorrow)
 			Calendar c = Calendar.getInstance();
 			c.add(Calendar.DATE, 1);
+			c.set(Calendar.HOUR, 0);
+			c.set(Calendar.MINUTE, 0);
+			c.set(Calendar.SECOND, 0);
 			Date firstValidDate = c.getTime();
 			
 			//check date passed is not before tomorrow
@@ -156,7 +161,7 @@ public class checkoutPage extends eStoresPage{
 			
 			
 			if (delDate.before(firstValidDate)){
-				throw new Exception ("Delivery date selected is before first available");
+				throw new Exception ("Desired delivery date "+deliveryDate+" is before first available (tomorrow)");
 			}
 			// else search for date including scrolling right
 			else{
@@ -164,6 +169,20 @@ public class checkoutPage extends eStoresPage{
 				String lastVisibleDateAfter="";
 //				while (deliveryDateScrollNext_Button.getWebElement().isEnabled()){
 				do{
+					//get list of disabled (not delivery) dates
+					List<WebElement> disabledDates = disabledDeliveryDate_Button.getWebElements();
+					List<String> disabledDatesS = new ArrayList<String>();
+					for (WebElement ddate:disabledDates){
+						disabledDatesS.add(ddate.getText().trim().substring(0,5)+"/"+c.get(Calendar.YEAR));
+					}
+					//check if date is valid - if not move on to next valid
+					while(disabledDatesS.contains(deliveryDate)){
+						Calendar cal = Calendar.getInstance();
+						cal.setTime(df.parse(deliveryDate));
+						cal.add(Calendar.DAY_OF_YEAR, 1);;
+						deliveryDate = TestHelper.getDateAsString(cal.getTime(), "dd/MM/yyyy");
+						delDate = df.parse(deliveryDate);
+					}
 				
 					lastVisibleDate = lastDeliveryDateInDisplay_Button.getElementText().trim().substring(0,5)+"/"+c.get(Calendar.YEAR);
 					
@@ -180,7 +199,9 @@ public class checkoutPage extends eStoresPage{
 						assertThat(dateFound,equalTo(true));
 					}
 					else{
+						waitSeconds(1);
 						deliveryDateScrollNext_Button.click();
+						waitSeconds(1);
 					}
 					
 					if(dateFound) break;
@@ -201,6 +222,8 @@ public class checkoutPage extends eStoresPage{
 		catch(AssertionError|Exception e){
 			TestHelper.handleExceptionNoRetry(e.getMessage());
 		}
+		
+		TestHelper.setTestDataValue("SelectedDeliveryDate", deliveryDate);
 	}
 	
 	public static void clickTCsCheckbox() throws Exception{
@@ -210,10 +233,15 @@ public class checkoutPage extends eStoresPage{
 			String logMessage = String.format("Clicking element "+termsAndConditions_Checkbox.getDescription() );
 			TestLogger.logTestStep(TestHelper.getStepCount(), logMessage);
 			
-			WebElement ele = getWebElement(termsAndConditions_Checkbox.getIframeXpath(), termsAndConditions_Checkbox.getLocator(), true, true);
-			int width = ele.getSize().getWidth();
-			Actions action = new Actions(BrowserHelper.getDriver());
-			action.moveByOffset(width/10000, 0).click(ele).build().perform();				
+			if (System.getProperty("BrowserName").equalsIgnoreCase("firefox")){
+				termsAndConditions_Checkbox.clickViaJavaScript();
+			}
+			else{
+				WebElement ele = getWebElement(termsAndConditions_Checkbox.getIframeXpath(), termsAndConditions_Checkbox.getLocator(), true, true);
+				int width = ele.getSize().getWidth();
+				Actions action = new Actions(BrowserHelper.getDriver());
+				action.moveToElement(ele, width-10, 0).click().build().perform();	
+			}
 
 			TestHelper.incrementStepCount();
 		}
@@ -223,24 +251,5 @@ public class checkoutPage extends eStoresPage{
 		}
 	}
 	
-//	public static void inputCardDetails(){
-//		driver.findElement(By.id("tnsiNameOnCard")).sendKeys("TestCP");
-//		WebElement frame = driver.findElement(By.xpath("//iframe[@class='gw-proxy-cardNumber']"));
-//		driver.switchTo().frame(frame);
-//		driver.findElement(By.xpath("//input")).sendKeys("511111111111111 8");
-//		
-//		driver.switchTo().defaultContent();
-//		frame = driver.findElement(By.xpath("//iframe[@class='gw-proxy-securityCode']"));
-//		driver.switchTo().frame(frame);
-//		driver.findElement(By.xpath("//input")).sendKeys("202");
-//		
-//		driver.switchTo().defaultContent();
-//		Select selector = new Select(driver.findElement(By.id("expiry-month")));
-//		selector.selectByValue("5");
-//		
-//		Select selector2 = new Select(driver.findElement(By.id("expiry-year")));
-//		selector2.selectByValue("2021");
-//		
-//		driver.findElement(By.id("tnsiSubmit")).click();;
-//	}
+
 }

@@ -385,6 +385,10 @@ public class ElementProperties {
 			CoreAssertions.assertElementIsNotSelected(this);
 		}
 		
+		public void assertElementTextMatchesRegEx(String regEx) throws Exception{
+			CoreAssertions.assertElementTextMatchesRegEx(this, regEx);
+		}
+		
 		/**
 		 * Creates Log entry and Executes specified against this element. 
 		 * no Retries are execrcised. 

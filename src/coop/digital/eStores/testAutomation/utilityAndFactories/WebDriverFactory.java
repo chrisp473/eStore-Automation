@@ -282,14 +282,16 @@ public class WebDriverFactory {
 //    	WebDriver driver = new RemoteWebDriver(capabilities);
 //    	return driver;
     	SafariOptions options = new SafariOptions();
-//    	options.setUseCleanSession(true);
+    	options.setUseCleanSession(true);
 //    	WebDriver driver = new SafariDriver(options);
 //    	return driver;
-    	 DesiredCapabilities capabilities = DesiredCapabilities.safari();
-    	 capabilities.setCapability(SafariOptions.CAPABILITY, options);
-    	 RemoteWebDriver driver = new RemoteWebDriver(
-    	     new URL("http://localhost:3333"), capabilities);
-    	 return driver;
+   	 DesiredCapabilities capabilities = DesiredCapabilities.safari();
+   	 capabilities.setBrowserName("Safari");
+   	 capabilities = DesiredCapabilities.safari();
+   	 capabilities.setCapability(SafariOptions.CAPABILITY, options);
+		WebDriver driver = new RemoteWebDriver(new URL("http://localhost:1111"), capabilities);
+    	 driver.get("http://google.co.uk");
+		return driver;
 
     }
 

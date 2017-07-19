@@ -931,4 +931,76 @@ public class CoreAssertions {
 			}
 		}
 	}
+	
+	public static void assertElementTextMatchesRegEx(String elementName, String framePath, By locator, String regEx) throws Exception
+	{
+		int retryCount = 0;
+		int maxRetryCount = 1;
+		
+		while (retryCount <= maxRetryCount)
+		{
+			try
+			{
+				String logMessage = String.format("Asserting element '%s' text matches regular expresssion '%s'", elementName, regEx);
+				TestLogger.logTestStep(TestHelper.getStepCount(), logMessage);
+				
+				WebElement ele = getWebElement(framePath, locator, true, false);
+				assertThat(ele.isDisplayed(), equalTo(true));
+				
+			}
+			catch(AssertionError | Exception e)
+			{
+				String errorMessage = String.format("Element '%s' not displayed", elementName);
+				handleException(errorMessage);
+			}
+			
+			try
+			{
+				WebElement ele = getWebElement(framePath, locator, true, false);
+				assertThat(ele.getText().matches(regEx), equalTo(true));
+				TestHelper.incrementStepCount();
+				break;
+			}
+			catch(AssertionError | Exception e)
+			{
+				String errorMessage = String.format("Element '%s' text does not match regular expression", elementName);
+				handleException(errorMessage);
+			}
+		}
+	}
+	
+	public static void assertElementTextMatchesRegEx(ElementProperties element,  String regEx) throws Exception
+	{
+		int retryCount = 0;
+		int maxRetryCount = 1;
+		
+		while (retryCount <= maxRetryCount)
+		{
+			try
+			{
+				String logMessage = String.format("Asserting element '%s' text matches regular expresssion '%s'", element.getDescription(), regEx);
+				TestLogger.logTestStep(TestHelper.getStepCount(), logMessage);
+				
+				assertThat(element.getWebElement().isDisplayed(), equalTo(true));
+				
+			}
+			catch(AssertionError | Exception e)
+			{
+				String errorMessage = String.format("Element '%s' not displayed", element.getDescription());
+				handleException(errorMessage);
+			}
+			
+			try
+			{
+				assertThat(element.getWebElement().getText().matches(regEx), equalTo(true));
+				TestHelper.incrementStepCount();
+				break;
+			}
+			catch(AssertionError | Exception e)
+			{
+				String errorMessage = String.format("Element '%s' text does not match regular expression", element.getDescription());
+				handleException(errorMessage);
+			}
+		}
+	}
 }

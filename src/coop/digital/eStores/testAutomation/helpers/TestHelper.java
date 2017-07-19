@@ -570,11 +570,11 @@ public class TestHelper {
 					if(nl.getLength()>0 && isOverridePermitted){
 						//if node exists overwrite with new details. 
 						
-						NodeList resultFolder = XMLUtil.GetNodesThatMatchXPath(xpathstr + File.separator+"ResultFolder", doc);
+						NodeList resultFolder = XMLUtil.GetNodesThatMatchXPath(xpathstr + "/ResultFolder", doc);
 						resultFolder.item(0).setTextContent(resultFolderName);
 						
-						NodeList resultFile =XMLUtil.GetNodesThatMatchXPath(xpathstr + File.separator+"ResultFile", doc);
-						resultFile.item(0).setTextContent(resultFolderName + File.separator+"log.xml");
+						NodeList resultFile =XMLUtil.GetNodesThatMatchXPath(xpathstr + "/ResultFile", doc);
+						resultFile.item(0).setTextContent(resultFolderName + "/log.xml");
 						
 						NodeList status = XMLUtil.GetNodesThatMatchXPath(xpathstr + "/Status", doc);
 						status.item(0).setTextContent(testStatus);
@@ -734,5 +734,25 @@ public class TestHelper {
 				}
 				//fail("");
 				TestHelper.reportFail("Test Completed With Fail", true);
+			}
+			
+			public static void setTestDataValue(String name, String value)
+			{
+				testData.put(name, value);
+			}
+			public static void setTestDataValues(String[] names, String[] values) throws Exception
+			{
+				//Check arrays are of the same legnth
+				if (names.length != values.length)
+				{
+					String Message = "Unable to Save test data as Name and VAlues arrays are not equal";
+					handleExceptionNoRetry(Message);
+				}
+				
+				//save data to the test date output. 
+				for (int i=0; i<names.length; i++)
+				{
+					testData.put(names[i], values[i]);
+				}
 			}
 }

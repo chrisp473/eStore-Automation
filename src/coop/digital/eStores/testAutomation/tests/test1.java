@@ -1,7 +1,10 @@
 package coop.digital.eStores.testAutomation.tests;
 
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 
+import coop.digital.eStores.testAutomation.helpers.BrowserHelper;
 import coop.digital.eStores.testAutomation.helpers.TestHelper;
 import coop.digital.eStores.testAutomation.pages.basketPage;
 import coop.digital.eStores.testAutomation.pages.checkoutPage;
@@ -43,13 +46,14 @@ public class test1 extends eStoresBaseTest{
 			checkoutPage.email_Input.input();
 			eStoresPage.takeScreenshot();
 			checkoutPage.confirmDeliveryDetails_Button.click();
-			
+		  
 			checkoutPage.selectDeliveryDate(TestHelper.getTestDataValue("DeliveryDate"));
+//			checkoutPage.selectDeliveryDate("30/07/2017");
 			eStoresPage.takeScreenshot();
 			checkoutPage.confirmDeliveryDate_Button.click();
 			
-//			checkoutPage.clickTCsCheckbox();
-			checkoutPage.termsAndConditions_Checkbox.clickViaJavaScript();
+			checkoutPage.clickTCsCheckbox();
+//			checkoutPage.termsAndConditions_Checkbox.clickViaJavaScript();
 			eStoresPage.takeScreenshot();
 			checkoutPage.payForItems_Button.click();
 			
@@ -65,6 +69,8 @@ public class test1 extends eStoresBaseTest{
 			eStoresPage.takeScreenshot();
 			
 			orderConfirmationPage.checkPageTitle();
+			orderConfirmationPage.validateOrderHeaderDetails();
+			orderConfirmationPage.validateOrderDetails();
 			
 			eStoresPage.takeScreenshot();
 

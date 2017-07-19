@@ -44,5 +44,6 @@
 	<classpathentry kind="lib" path="ProjectResources/lib/xercesImpl-2.11.0.jar"/>
 	<classpathentry kind="lib" path="ProjectResources/lib/xml-apis-1.4.01.jar"/>
 	<classpathentry kind="lib" path="ProjectResources/lib/xmlbeans-2.6.0.jar"/>
+	<classpathentry kind="lib" path="ProjectResources/lib/ashot-1.5.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
