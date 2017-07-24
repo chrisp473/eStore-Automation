@@ -274,7 +274,7 @@ public class BrowserHelper {
 
 	public static File takeScreenShot() throws AWTException
 	{
-		Screenshot scre = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000)).takeScreenshot(driver);
+
 		return ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 	}
 	

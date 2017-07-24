@@ -63,6 +63,8 @@ public class checkoutPage extends eStoresPage{
 	public static final ElementProperties  yesEnterDetails_Button = new ElementProperties(By.xpath("//a[@role='button' and contains(text(),'Yes, enter details')]"), "Membership - Yes Enter Details Button", ElementTypes.BUTTON,Constants.BLANK_VALUE);
 	
 	//Pay for your Items
+	public static final ElementProperties  payByPayPal_Button = new ElementProperties(By.xpath("//a[@href='#PayPal']"), "Pay By PayPal Button", ElementTypes.BUTTON,Constants.BLANK_VALUE);
+	public static final ElementProperties  payWithPayPal_Button = new ElementProperties(By.xpath("//input[@value='Pay with Paypal']"), "Pay with PayPal Button", ElementTypes.BUTTON,Constants.BLANK_VALUE);
 	public static final ElementProperties  nameOnCard_Input = new ElementProperties(By.id("tnsiNameOnCard"), "Name on Card Input", ElementTypes.TEXTBOX,"NameOnCard",Constants.BLANK_VALUE);
 	public static final ElementProperties  cardNumber_Input = new ElementProperties(By.xpath("//input"), "Card Number Input", ElementTypes.TEXTBOX,"CardNumber","//iframe[@class='gw-proxy-cardNumber']");
 	public static final ElementProperties  cardCCVNumber_Input = new ElementProperties(By.xpath("//input"), "Card CCV Number Input", ElementTypes.TEXTBOX,"CCVNumber","//iframe[@class='gw-proxy-securityCode']");

@@ -15,7 +15,7 @@ public class productPage extends eStoresPage {
 	
 	//*** PAGE ELEMENTS ***
 	public static final ElementProperties addToBasket_Button = new ElementProperties(By.xpath("//*[@role='button' and text()='Add To Basket']"),"Add to Basket Button",ElementTypes.BUTTON,Constants.BLANK_VALUE);
-	public static final ElementProperties checkout_Button = new ElementProperties(By.xpath("//div[@id='addedToBasketMessage']//div[@class='alert alert-success']//a[@href='/basket-page/']"),"Checkout Button",ElementTypes.BUTTON,Constants.BLANK_VALUE);
+	public static final ElementProperties checkout_Button = new ElementProperties(By.xpath("//div[@id='addedToBasketMessage']//div[@class='alert alert-success']//a[@href='/basket-page/']"),"View Basket Button",ElementTypes.BUTTON,Constants.BLANK_VALUE);
 
 	public static final ElementProperties viewBasket_Button = new ElementProperties(By.xpath("//span[contains(text(),'View Basket')]"),"View Basket Button",ElementTypes.BUTTON,Constants.BLANK_VALUE);
 	
