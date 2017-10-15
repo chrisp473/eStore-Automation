@@ -221,6 +221,10 @@ public class ElementProperties {
 			CoreActions.clickViaJavaScript(this.Description, this.Iframe, this.ByLocatator);
 		}
 		
+		public void clickViaOffset(int x, int y) throws Exception{
+			CoreActions.clickViaOffset(this.Description, this.Iframe, this.ByLocatator, x, y);
+		}
+		
 		public void selectOption() throws Exception{
 			CoreActions.selectOption(this,getDataValue());
 		}

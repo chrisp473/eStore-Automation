@@ -6,7 +6,9 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.apache.commons.io.FileUtils;
@@ -58,6 +60,7 @@ public class CoreActions {
 				WebDriverWait wait = new WebDriverWait(BrowserHelper.getDriver(), Constants.OBJECT_SYNC_DEFAULT_TIMEOUT);
 				wait.until(ExpectedConditions.elementToBeClickable(ele));
 				
+				Thread.sleep(500);
 				ele.click();
 
 				TestHelper.incrementStepCount();
@@ -69,6 +72,22 @@ public class CoreActions {
 			}
 		}
 	}
+	
+	public static String getNextDay(int day, int diffe)
+	{ // Usage: 'getNextDay(Calendar.MONDAY)' yeilds 'DD/MM/YY' in String.
+		
+        Calendar date = Calendar.getInstance();
+        int diff = day - date.get(Calendar.DAY_OF_WEEK);
+        if (!(diff > 0)) {
+            diff += diffe;
+        }
+        date.add(Calendar.DAY_OF_MONTH, diff);
+        SimpleDateFormat format1 = new SimpleDateFormat("dd/MM/yyyy");
+        
+        return format1.format(date.getTime());
+	}
+	
+	
 	public static void click(String elementName, String framePath, WebElement Ele) throws Exception
 	{
 		retryCount = 0;
@@ -140,6 +159,38 @@ public class CoreActions {
 				WebDriver driver = BrowserHelper.getDriver();
 				((JavascriptExecutor)driver).executeScript("window.scroll("+point.getX()+","+(point.getY()-100)+")");
 				((JavascriptExecutor)driver).executeScript("arguments[0].click();", ele);
+				
+				TestHelper.incrementStepCount();
+				break;
+			}
+			catch(AssertionError | Exception e)
+			{
+				handleException(e.getMessage());				
+			}
+		}
+	}
+	
+	public static void clickViaOffset(String elementName, String framePath, By locator, int x, int y) throws Exception
+	{
+		retryCount = 0;
+		maxRetryCount = 3;
+		
+		while (retryCount <= maxRetryCount)
+		{
+			try
+			{
+				if(!TestHelper.getSystemProperty("deviceType").equals("DESKTOP"))
+					jumpToElement(elementName, locator);
+				
+				String logMessage = String.format("Clicking element '%s'", elementName);
+				TestLogger.logTestStep(TestHelper.getStepCount(), logMessage);
+							
+				
+				WebElement ele = getWebElement(framePath, locator, true, true);
+				WebDriver driver = BrowserHelper.getDriver();
+
+			    Actions act = new Actions(driver);
+			    act.moveToElement(ele).moveByOffset(x, y).click().perform();
 				
 				TestHelper.incrementStepCount();
 				break;

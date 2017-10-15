@@ -32,8 +32,8 @@
           <table border="0" id="summaryDetails">
             <thead>
               <tr>
-				<td bgcolor="yellow">Column Name</td>
-                <td bgcolor="yellow">Column Value</td>
+				<td bgcolor="yellow">Data Name</td>
+                <td bgcolor="yellow">Data Value</td>
               </tr>
             </thead>
             <tbody>

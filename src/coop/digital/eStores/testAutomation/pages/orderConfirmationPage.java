@@ -99,4 +99,9 @@ public class orderConfirmationPage extends eStoresPage{
 		billingAddressLine4_Text.assertElementTextMatchesDataTable();
 		billingPostCode_Text.assertElementTextMatchesDataTable();
 	}
+	
+	public static void outputOrderNumber() throws Exception{
+		
+		TestHelper.setTestDataValue("CustomerOrderNumber", orderNumber_Text.getElementText().replace("OrderNo: ", "").trim());
+	}
 }

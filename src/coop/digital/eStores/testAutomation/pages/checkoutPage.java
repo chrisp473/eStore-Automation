@@ -190,7 +190,7 @@ public class checkoutPage extends eStoresPage{
 					
 					Date lastVisibleDateD = df.parse(lastVisibleDate);
 					
-					if (lastVisibleDateD.after(delDate) || lastVisibleDate.equals(delDate)){
+					if (lastVisibleDateD.after(delDate) || lastVisibleDateD.equals(delDate)){
 						for (WebElement date: deliveryDateInDisplay_Button.getWebElements()){
 							if ((date.getText().trim().substring(0,5)+"/"+c.get(Calendar.YEAR)).equals(deliveryDate)){
 								date.click();
@@ -201,7 +201,7 @@ public class checkoutPage extends eStoresPage{
 						assertThat(dateFound,equalTo(true));
 					}
 					else{
-						waitSeconds(1);
+//						waitSeconds(1);
 						deliveryDateScrollNext_Button.click();
 						waitSeconds(1);
 					}
@@ -235,15 +235,16 @@ public class checkoutPage extends eStoresPage{
 			String logMessage = String.format("Clicking element "+termsAndConditions_Checkbox.getDescription() );
 			TestLogger.logTestStep(TestHelper.getStepCount(), logMessage);
 			
-			if (System.getProperty("BrowserName").equalsIgnoreCase("firefox")){
-				termsAndConditions_Checkbox.clickViaJavaScript();
-			}
-			else{
-				WebElement ele = getWebElement(termsAndConditions_Checkbox.getIframeXpath(), termsAndConditions_Checkbox.getLocator(), true, true);
-				int width = ele.getSize().getWidth();
-				Actions action = new Actions(BrowserHelper.getDriver());
-				action.moveToElement(ele, width-10, 0).click().build().perform();	
-			}
+//			if (System.getProperty("BrowserName").equalsIgnoreCase("firefox")){
+				//termsAndConditions_Checkbox.clickViaJavaScript();
+				termsAndConditions_Checkbox.clickViaOffset(150, -10);
+//			}
+//			else{
+//				WebElement ele = getWebElement(termsAndConditions_Checkbox.getIframeXpath(), termsAndConditions_Checkbox.getLocator(), true, true);
+//				int width = ele.getSize().getWidth();
+//				Actions action = new Actions(BrowserHelper.getDriver());
+//				action.moveToElement(ele, width-10, 0).click().build().perform();	
+//			}
 
 			TestHelper.incrementStepCount();
 		}

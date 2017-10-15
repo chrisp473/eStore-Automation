@@ -369,7 +369,6 @@ public class TestHelper {
 			TestLogger.logTestStep(TestHelper.getStepCount(), "BROWSER IN USE :- " + BrowserHelper.getBrowserName());
 			TestLogger.logTestStep(TestHelper.getStepCount(), "BROWSER VERSION :- " + BrowserHelper.getBrowserVersion());
 			TestLogger.logTestStep(TestHelper.getStepCount(), "URL IN USE :- " + url);
-//			TestLogger.logTestStep(TestHelper.getStepCount(), "DEVICE IN USE :- " + deviceType);
 			TestLogger.logTestStep(TestHelper.getStepCount(), "DEVICE IN USE:- " + System.getProperty("os.name")+"-" +System.getProperty("os.version"));//This may need adjusting for remote execution
 			incrementStepCount();
 		}

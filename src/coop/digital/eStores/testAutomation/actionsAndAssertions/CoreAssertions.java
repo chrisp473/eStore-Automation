@@ -196,7 +196,7 @@ public class CoreAssertions {
 				
 				WebElement webElement = getWebElement(framePath, locator, true, false);
 				actualText = webElement.getText();
-
+				
 				assertThat(CoreActions.formatStringForSpace(actualText), equalTo(CoreActions.formatStringForSpace(expectedText)));
 
 				TestHelper.incrementStepCount();
@@ -728,7 +728,7 @@ public class CoreAssertions {
 			}
 		}
 	}
-
+	
 	public static void assertPagePartialURLEquals(String PartialURL) throws Exception
 	{
 		retryCount = 0;

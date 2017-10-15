@@ -83,6 +83,11 @@ public class WebDriverFactory {
 			gridHubUrl = new URL("http://"+ System.getProperty("RemoteServerIP") +":"+ System.getProperty("RemoteServerport") +"/wd/hub");
 		}
 		
+		if (System.getProperty("BrowserBatchFile")!=null){
+			browser = System.getProperty("BrowserBatchFile");
+			System.setProperty("BrowserName", browser);
+		}
+		
 		switch (browser)
 		{
 			case "CHROME":
