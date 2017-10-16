@@ -29,6 +29,7 @@ public class SmokeTest extends eStoresBaseTest{
 			eStoresPage.takeScreenshot();
 			
 			basketPage.checkPageTitle();
+			
 			basketPage.continueToCheckout_Button.click();
 			eStoresPage.takeScreenshot();
 
@@ -44,8 +45,6 @@ public class SmokeTest extends eStoresBaseTest{
 			eStoresPage.takeScreenshot();
 			checkoutPage.confirmDeliveryDetails_Button.click();
 		  
-//			checkoutPage.selectDeliveryDate(TestHelper.getTestDataValue("DeliveryDate"));
-			
 			checkoutPage.selectDeliveryDate(eStoresPage.getNextDay(Calendar.MONDAY, 14));
 			eStoresPage.takeScreenshot();
 			checkoutPage.confirmDeliveryDate_Button.click();
@@ -57,14 +56,13 @@ public class SmokeTest extends eStoresBaseTest{
 			
 			checkoutPage.noProceedToPayment_Button.click();
 			
-			// TODO complete these steps if on staging. 
+			checkoutPage.nameOnCard_Input.inputText();
+			checkoutPage.cardNumber_Input.inputText();
+			checkoutPage.cardCCVNumber_Input.inputText();
+			checkoutPage.cardExpiryMonth_DropDown.selectOption();
+			checkoutPage.cardExpiryYear_DropDown.selectOption();
 			
-//			checkoutPage.payAndComplete_Button.click();
-//			Thread.sleep(10000);
-//			orderConfirmationPage.checkPageTitle();
-//			orderConfirmationPage.validateOrderHeaderDetails();
-//			orderConfirmationPage.outputOrderNumber();
-//			orderConfirmationPage.validateOrderDetails();
+			// TODO complete these steps if on staging. 
 			
 			eStoresPage.takeScreenshot();
 		} catch (Throwable e) {

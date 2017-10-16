@@ -20,6 +20,7 @@ public class landingPage extends eStoresPage{
 	public static final ElementProperties membership_Enter = new ElementProperties(By.xpath("//form/a[contains(@ng-click,'CheckHeaderMembershipNumber')]"), "Membership Sign In", ElementTypes.BUTTON);
 	public static final ElementProperties membership_Customer = new ElementProperties(By.xpath("//div/div[contains(@class,'text-center ng-binding')]"),"Membership Number Textbox", ElementTypes.PAGETEXT);
 	public static final ElementProperties membership_Logout = new ElementProperties(By.xpath("//div/a[contains(@ng-click,'RemoveMembershipCookie')]"), "Membership Logout", ElementTypes.BUTTON);
+	public static final ElementProperties ElementName = new ElementProperties(By.xpath("//input[contains(@ng-change, 'doSearch')]"), "Elemnts Name", ElementTypes.TEXTBOX);
 	
 	//*** PAGE METHODS***
 	public static void checkPageTitle() throws Exception {

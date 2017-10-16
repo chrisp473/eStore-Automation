@@ -61,6 +61,19 @@ public class checkoutPage extends eStoresPage{
 	//Membership Details
 	public static final ElementProperties  noProceedToPayment_Button = new ElementProperties(By.xpath("//div[@id='checkout-step-4' and @aria-expanded='true']//div[@class='membershipStep membershipStep1']//a[@role='button' and contains(text(),'No, proceed to payment')]"), "Membership - No Proceed To Payment Button", ElementTypes.BUTTON,Constants.BLANK_VALUE);
 	public static final ElementProperties  yesEnterDetails_Button = new ElementProperties(By.xpath("//a[@role='button' and contains(text(),'Yes, enter details')]"), "Membership - Yes Enter Details Button", ElementTypes.BUTTON,Constants.BLANK_VALUE);
+	public static final ElementProperties  memberNumberInput = new ElementProperties(By.id("memberNumberInput"), "Member Number Input", ElementTypes.TEXTBOX);
+	public static final ElementProperties  memberNumberSubmit = new ElementProperties(By.xpath("//button[contains(@ng-click,'submitMemNumber')]"), "Member Number Submit", ElementTypes.BUTTON);
+	public static final ElementProperties  yesCheckMyDetails_Button = new ElementProperties(By.xpath("//a[contains(@href,'#validateDetails')]"), "Membership - Yes, Check my Details Button", ElementTypes.BUTTON);
+	public static final ElementProperties  membershipNo_Button = new ElementProperties(By.xpath("//label[contains(@for,'membershipDetailsNo')]"), "Membership - No Button", ElementTypes.RADIOBUTTON);
+	public static final ElementProperties  membershipYes_Button = new ElementProperties(By.xpath("//label[contains(@for,'membershipDetailsYes')]"), "Membership - No Button", ElementTypes.RADIOBUTTON);
+	public static final ElementProperties  membershipDisplayMemberPoints = new ElementProperties(By.xpath("//button[contains(@ng-click,'displayMemberPoints')]"), "Membership Submit Button", ElementTypes.BUTTON);
+	public static final ElementProperties  membershipDisplayMemberPointsTryAgain = new ElementProperties(By.xpath("//a[contains(@ng-click,'displayMemberPoints')]"), "Membership Submit Button", ElementTypes.BUTTON);
+	public static final ElementProperties  membershipAmount = new ElementProperties(By.xpath("//input[contains(@name,'PtsFAmount')]"), "Membership Points Input", ElementTypes.TEXTBOX);
+	public static final ElementProperties  membershipUpdate = new ElementProperties(By.xpath("//button[contains(@ng-click,'UpdateMeaningfulMembershipPayment')]"), "Membership Points Input Button", ElementTypes.BUTTON);
+	public static final ElementProperties  payRemainingBalance = new ElementProperties(By.xpath("//a[contains(text(), 'Pay remaining Balance')]"), "Pay Remaining Balance Button", ElementTypes.BUTTON);
+	public static final ElementProperties  memberTryAgain_Button = new ElementProperties(By.xpath("//a[contains(@ng-click,'RetryAddressEntry')]"), "Try Again Membership Button", ElementTypes.BUTTON);
+	public static final ElementProperties  memberFirstName = new ElementProperties(By.id("MemberFName"), "Membership First Name Textbox", ElementTypes.TEXTBOX);
+	public static final ElementProperties  memberLastName = new ElementProperties(By.id("MemberLName"), "Membership Last Name Textbox", ElementTypes.TEXTBOX);
 	
 	//Pay for your Items
 	public static final ElementProperties  payByPayPal_Button = new ElementProperties(By.xpath("//a[@href='#PayPal']"), "Pay By PayPal Button", ElementTypes.BUTTON,Constants.BLANK_VALUE);
@@ -71,10 +84,34 @@ public class checkoutPage extends eStoresPage{
 	public static final ElementProperties  cardExpiryMonth_DropDown = new ElementProperties(By.id("expiry-month"), "Card Expiry Month Drop Down", ElementTypes.DROPDOWN, "CardExpiryMonth",Constants.BLANK_VALUE);
 	public static final ElementProperties  cardExpiryYear_DropDown = new ElementProperties(By.id("expiry-year"), "Card Expiry Year Drop Down", ElementTypes.DROPDOWN, "CardExpiryYear",Constants.BLANK_VALUE);
 	public static final ElementProperties  payAndComplete_Button = new ElementProperties(By.id("tnsiSubmit"), "Pay and Complete Button", ElementTypes.BUTTON,Constants.BLANK_VALUE);
+	public static final ElementProperties  membershipRewardSpend = new ElementProperties(By.xpath("//div[@id='TNSi']/div/span[contains(text(), '-£0.01')]"), "Membership Reward Spend Span", ElementTypes.PAGETEXT);
+	
+	//Warranties and Services
+	public static final ElementProperties  warranty_Information = new ElementProperties(By.xpath("//strong[text()='Optional 5 Year Washing Machine Warranty']"),"Warranty Info (Mini-Basket)", ElementTypes.PAGETEXT);
+	public static final ElementProperties  connection_Information = new ElementProperties(By.xpath("//strong[text()='Connection of your new Washing Machine']"),"Connection Info (Mini-Basket)", ElementTypes.PAGETEXT);
+	public static final ElementProperties  removal_Information = new ElementProperties(By.xpath("//strong[text()='Removal of your old disconnected appliance']"),"Removal Info (Mini-Basket)", ElementTypes.PAGETEXT);
 	
 	//------------------------------------------------------------------
 	
 	//*** PAGE METHODS***
+	
+	public static void assertMembershipSpend() throws Exception {
+		CoreAssertions.assertElementIsDisplayed(membershipRewardSpend);
+	}
+	
+	public static void assertError() throws Exception {
+		CoreAssertions.assertElementHasClass("Membership Points Input", "", membershipAmount.getLocator(), "ng-invalid");
+	}
+	
+	public static void assertSuccess() throws Exception {
+		CoreAssertions.assertElementHasClass("Membership Points Input", "", membershipAmount.getLocator(), "ng-valid");
+	}
+	
+	public static void assertServices() throws Exception{
+		CoreAssertions.assertElementIsDisplayed(warranty_Information);
+		CoreAssertions.assertElementIsDisplayed(connection_Information);
+		CoreAssertions.assertElementIsDisplayed(removal_Information);
+	}
 	
 	public static void checkPageTitle() throws Exception{
 		CoreAssertions.assertPageTitleEquals(pageTitle);
@@ -107,7 +144,6 @@ public class checkoutPage extends eStoresPage{
 			TestHelper.handleExceptionNoRetry(e.getMessage());
 		}
 	}
-	
 	
 	public static void validateSelectedAddress() throws Exception{
 
@@ -237,7 +273,7 @@ public class checkoutPage extends eStoresPage{
 			
 //			if (System.getProperty("BrowserName").equalsIgnoreCase("firefox")){
 				//termsAndConditions_Checkbox.clickViaJavaScript();
-				termsAndConditions_Checkbox.clickViaOffset(150, -10);
+				termsAndConditions_Checkbox.clickViaOffset(150, 0);
 //			}
 //			else{
 //				WebElement ele = getWebElement(termsAndConditions_Checkbox.getIframeXpath(), termsAndConditions_Checkbox.getLocator(), true, true);

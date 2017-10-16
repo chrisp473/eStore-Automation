@@ -631,6 +631,51 @@ public class CoreAssertions {
 			}
 		}
 	}
+	
+
+	public static void assertElementHasClass(String elementName, String framePath, By locator, String expectedClass) throws Exception
+	{
+		retryCount = 0;
+		maxRetryCount = 1;
+		
+		String assertedClass = "NO_CLASS_FOUND";
+		
+		while (retryCount <= maxRetryCount)
+		{
+			try
+			{
+				String logMessage = String.format("Asserting that the element '%s' contains the class '%s'", elementName, expectedClass);
+				TestLogger.logTestStep(TestHelper.getStepCount(), logMessage);
+				
+				WebElement webElement = getWebElement(framePath, locator, true, false);
+
+			    String classes = webElement.getAttribute("class");
+			    
+			    for (String c : classes.split(" ")) {
+			        if (c.equals(expectedClass)) {
+			            assertedClass = c;
+			        }
+			    }
+			    
+
+				assertThat(assertedClass, equalTo(expectedClass));
+
+				TestHelper.incrementStepCount();
+				break;
+			}
+			catch(TimeoutException e)
+			{
+				String errorMessage = String.format("Element '%s' is not displayed", elementName);
+				handleException(errorMessage);
+			}
+			catch(AssertionError | Exception e)
+			{
+				String errorMessage = String.format("Element '%s' classes does not contain '%s'.", elementName, expectedClass);
+				handleException(errorMessage);
+			}
+		}
+	}
+
 
 	public static void assertElementAttributeEquals(String elementName, String framePath, By locator, String attributeIdentifier, String expectedText) throws Exception
 	{

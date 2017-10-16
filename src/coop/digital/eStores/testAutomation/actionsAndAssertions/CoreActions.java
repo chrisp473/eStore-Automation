@@ -79,9 +79,9 @@ public class CoreActions {
         Calendar date = Calendar.getInstance();
         int diff = day - date.get(Calendar.DAY_OF_WEEK);
         if (!(diff > 0)) {
-            diff += diffe;
+            diff += 7;
         }
-        date.add(Calendar.DAY_OF_MONTH, diff);
+        date.add(Calendar.DAY_OF_MONTH, diff+diffe);
         SimpleDateFormat format1 = new SimpleDateFormat("dd/MM/yyyy");
         
         return format1.format(date.getTime());

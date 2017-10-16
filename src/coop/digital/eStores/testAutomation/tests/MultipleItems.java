@@ -43,10 +43,8 @@ public class MultipleItems extends eStoresBaseTest{
 			checkoutPage.email_Input.input();
 			eStoresPage.takeScreenshot();
 			checkoutPage.confirmDeliveryDetails_Button.click();
-		  
-//			checkoutPage.selectDeliveryDate(TestHelper.getTestDataValue("DeliveryDate"));
 			
-			checkoutPage.selectDeliveryDate(eStoresPage.getNextDay(Calendar.MONDAY, 14));
+			checkoutPage.selectDeliveryDate(eStoresPage.getNextDay(Calendar.MONDAY, 7));
 			eStoresPage.takeScreenshot();
 			checkoutPage.confirmDeliveryDate_Button.click();
 
