@@ -74,7 +74,8 @@ public class checkoutPage extends eStoresPage{
 	public static final ElementProperties  memberTryAgain_Button = new ElementProperties(By.xpath("//a[contains(@ng-click,'RetryAddressEntry')]"), "Try Again Membership Button", ElementTypes.BUTTON);
 	public static final ElementProperties  memberFirstName = new ElementProperties(By.id("MemberFName"), "Membership First Name Textbox", ElementTypes.TEXTBOX);
 	public static final ElementProperties  memberLastName = new ElementProperties(By.id("MemberLName"), "Membership Last Name Textbox", ElementTypes.TEXTBOX);
-	
+	public static final ElementProperties  memberDoNotSpend_RadioButton = new ElementProperties(By.xpath("//label[contains(@for, 'voucherOptionsNone')]"), "Do Not Spend Radio Button", ElementTypes.RADIOBUTTON);
+	public static final ElementProperties  memberInput = new ElementProperties(By.id("voucherInput"), "elementid_voucherInput?", ElementTypes.TEXTBOX);
 	//Pay for your Items
 	public static final ElementProperties  payByPayPal_Button = new ElementProperties(By.xpath("//a[@href='#PayPal']"), "Pay By PayPal Button", ElementTypes.BUTTON,Constants.BLANK_VALUE);
 	public static final ElementProperties  payWithPayPal_Button = new ElementProperties(By.xpath("//input[@value='Pay with Paypal']"), "Pay with PayPal Button", ElementTypes.BUTTON,Constants.BLANK_VALUE);
@@ -91,7 +92,7 @@ public class checkoutPage extends eStoresPage{
 	public static final ElementProperties  connection_Information = new ElementProperties(By.xpath("//strong[text()='Connection of your new Washing Machine']"),"Connection Info (Mini-Basket)", ElementTypes.PAGETEXT);
 	public static final ElementProperties  removal_Information = new ElementProperties(By.xpath("//strong[text()='Removal of your old disconnected appliance']"),"Removal Info (Mini-Basket)", ElementTypes.PAGETEXT);
 	
-	//------------------------------------------------------------------
+	//-------------------------------------------------------------------------------------------
 	
 	//*** PAGE METHODS***
 	
@@ -101,6 +102,10 @@ public class checkoutPage extends eStoresPage{
 	
 	public static void assertError() throws Exception {
 		CoreAssertions.assertElementHasClass("Membership Points Input", "", membershipAmount.getLocator(), "ng-invalid");
+	}
+	
+	public static void assertNoSpend() throws Exception {
+		CoreAssertions.assertElementIsNotDisplayed(memberInput);
 	}
 	
 	public static void assertSuccess() throws Exception {

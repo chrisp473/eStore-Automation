@@ -34,6 +34,12 @@ public class basketPage extends eStoresPage{
 
 	public static final ElementProperties removeItem_Button = new ElementProperties(By.xpath("//button[contains(@ng-click, 'removeSelectedItem')]"), "Remove Service Button", ElementTypes.BUTTON);
 	public static final ElementProperties acceptWarranties_Button = new ElementProperties(By.xpath("//button[contains(@ng-click, 'AcceptWarrantyTermsAndConditions')]"), "Accept Warranties Button", ElementTypes.BUTTON);
+
+	// Voucher Elements
+	public static final ElementProperties voucherInput_Textbox = new ElementProperties(By.xpath("//form[contains(@ng-submit,'AddCoupon()')]/div/input"), "Voucher Input Field", ElementTypes.TEXTBOX);
+	public static final ElementProperties voucherSubmit_Button = new ElementProperties(By.xpath("//form[contains(@ng-submit,'AddCoupon()')]/div/span/button"), "Voucher Submit Button", ElementTypes.BUTTON);
+	public static final ElementProperties voucherInvalidCode_Text = new ElementProperties(By.xpath("//div[contains(@ng-if,'InvalidCoupon')]"), "Invalid Code Textbox", ElementTypes.PAGETEXT);
+	public static final ElementProperties voucherInvalidDismiss = new ElementProperties(By.xpath("//a[contains(@ng-click,'DismissInvalid()')]/i"), "Dismiss Invalid Code Button", ElementTypes.BUTTON);
 	
 	//*** PAGE METHODS***
 	
@@ -41,6 +47,14 @@ public class basketPage extends eStoresPage{
 		CoreAssertions.assertPageTitleEquals(pageTitle);
 	}
 	
+	public static void assertInvalidCode() throws Exception{
+		CoreAssertions.assertElementIsDisplayed(voucherInvalidCode_Text);
+	}
+	
+	public static void assertErrorDismissed() throws Exception{
+		CoreAssertions.assertElementIsNotDisplayed(voucherInvalidCode_Text);
+	}
+
 	public static void assertProducts() throws Exception{
 		CoreAssertions.assertElementIsDisplayed(productOne);
 		CoreAssertions.assertElementIsDisplayed(productTwo);
