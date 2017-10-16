@@ -12,11 +12,11 @@ import coop.digital.eStores.testAutomation.pages.productPage;
 import coop.digital.eStores.testAutomation.superPage.eStoresPage;
 import coop.digital.eStores.testAutomation.superTest.eStoresBaseTest;
 
-public class PurchaseItemWithMembership extends eStoresBaseTest{
+public class PurchaseItemPartialMembership extends eStoresBaseTest{
 
-	@Test(groups = { "PurchaseItemWithMembership" }, invocationCount=1)
+	@Test(groups = { "PurchaseItemPartialMembership" }, invocationCount=1)
 	public void testSteps() throws Exception{
-		try{ 
+		try{
 			landingPage.checkPageTitle();
 			eStoresPage.takeScreenshot();
 		
@@ -55,6 +55,7 @@ public class PurchaseItemWithMembership extends eStoresBaseTest{
 			checkoutPage.payForItems_Button.click();
 			
 			checkoutPage.yesEnterDetails_Button.click();
+			System.out.println(TestHelper.getTestDataValue("Membership"));
 			checkoutPage.memberNumberInput.inputText(TestHelper.getTestDataValue("Membership"));
 			checkoutPage.memberNumberSubmit.click();
 			checkoutPage.yesCheckMyDetails_Button.click();
@@ -63,16 +64,20 @@ public class PurchaseItemWithMembership extends eStoresBaseTest{
 			checkoutPage.assertError();
 			
 			// £0.01 for Live, need to split if for staging so it makes a complete payment TODO
-			
-			// Change this to insert full value of order. cannot do this on live yet. 
 			checkoutPage.membershipAmount.inputText("0.01");
-			
-			
 			checkoutPage.membershipUpdate.click();
 			checkoutPage.assertSuccess();
 			checkoutPage.payRemainingBalance.click();
 			checkoutPage.assertMembershipSpend();
-		
+			
+			// Complete rest of order.
+			
+			checkoutPage.nameOnCard_Input.inputText();
+			checkoutPage.cardNumber_Input.inputText();
+			checkoutPage.cardCCVNumber_Input.inputText();
+			checkoutPage.cardExpiryMonth_DropDown.selectOption();
+			checkoutPage.cardExpiryYear_DropDown.selectOption();
+			
 			// TODO Staging test and complete payment.
 			
 			eStoresPage.takeScreenshot();

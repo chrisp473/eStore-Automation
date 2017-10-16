@@ -16,13 +16,13 @@ public class MembershipTest extends eStoresBaseTest{
 			eStoresPage.takeScreenshot();
 			
 			landingPage.membership_Login.click();
-			landingPage.membership_Input.inputText(TestHelper.getTestDataValue("CardNumber"));
+			landingPage.membership_Input.inputText(TestHelper.getTestDataValue("Membership"));
 			landingPage.membership_Enter.click();
 
 			landingPage.checkPageTitle(); // Ensure we're back at homepage. 
 
 			landingPage.membership_Login.click();
-			landingPage.checkCurrentlySignedIn(TestHelper.getTestDataValue("CardNumber"));
+			landingPage.checkCurrentlySignedIn(TestHelper.getTestDataValue("Membership"));
 			landingPage.membership_Logout.click();
 
 			landingPage.checkPageTitle();

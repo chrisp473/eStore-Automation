@@ -55,7 +55,7 @@ public class FailMembershipLogin extends eStoresBaseTest{
 			checkoutPage.payForItems_Button.click();
 			
 			checkoutPage.yesEnterDetails_Button.click();
-			checkoutPage.memberNumberInput.inputText(TestHelper.getTestDataValue("CardNumber"));
+			checkoutPage.memberNumberInput.inputText(TestHelper.getTestDataValue("Membership"));
 			checkoutPage.memberNumberSubmit.click();
 			checkoutPage.yesCheckMyDetails_Button.click();
 			checkoutPage.membershipNo_Button.click();
